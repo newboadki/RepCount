@@ -10,7 +10,14 @@ import CoreData
 
 class DayWorkoutPlanPresenter: ObservableObject {
 
+    struct ErrorDescription {
+        var title: String = ""
+        var message: String = ""
+    }
+
     @Published var plan: DayWorkoutPlan
+    @Published var shouldPresentError = false
+    var errorDescription = ErrorDescription()
 
     private let workoutsDataSource: WorkoutsDataSource
 
@@ -47,8 +54,12 @@ class DayWorkoutPlanPresenter: ObservableObject {
 
         switch result {
         case .success(_):
+            shouldPresentError = false
             break
-        case .failure(_):
+        case .failure(let error ):
+            errorDescription.title = "Something went wrong"
+            errorDescription.message = error.localizedDescription
+            shouldPresentError = true
             break
         }
     }

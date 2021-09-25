@@ -1,40 +1,13 @@
 //
-//  Workout.swift
+//  Workout+Data.swift
 //  RepCount
 //
-//  Created by Borja Arias Drake on 19.09.2021..
+//  Created by Borja Arias Drake on 25.09.2021..
 //
 
 import Foundation
-import SwiftUI
 
-struct DayWorkoutPlan {
-
-    static let BasicStrengthPlan = basicStrengthConditioningPlan()
-    var workouts: [WorkoutSchedule]
-
-    private static func basicStrengthConditioningPlan() -> DayWorkoutPlan {
-        DayWorkoutPlan(workouts: [WorkoutSchedule(id: "morning wk", timeOfDay: .morning, workout: Workout.basicStrengthConditioning(workoutId: 1)),
-                                  WorkoutSchedule(id: "evening wk", timeOfDay: .evening, workout: Workout.basicStrengthConditioning(workoutId: 2))])
-    }
-}
-
-struct WorkoutSchedule: Identifiable {
-    enum TimeOfDay: String {
-        case morning = "morning"
-        case evening = "evening"
-    }
-
-    let id: String
-    var timeOfDay: TimeOfDay
-    var workout: Workout
-}
-
-struct Workout: Identifiable, Codable {
-
-    let id: Int
-    var name: String
-    var exercises: [Exercise]
+extension Workout {
 
     static func basicStrengthConditioning(workoutId: Int) -> Workout {
         return Workout(id: workoutId,
@@ -51,17 +24,3 @@ struct Workout: Identifiable, Codable {
                                    Exercise(id: workoutId + 11, name: "Calf compressions",repCountGoal: 20)])
     }
 }
-
-struct Exercise: Identifiable, Codable {
-
-    let id: Int
-
-    let name: String
-
-    // The number of repetitions per series
-    let repCountGoal: Int
-
-    var isCompleted: Bool = false
-}
-
-

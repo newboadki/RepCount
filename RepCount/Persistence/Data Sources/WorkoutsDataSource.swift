@@ -10,8 +10,8 @@ import CoreData
 
 class WorkoutsDataSource {
 
-    enum OperationError: Error {
-        case couldNotRetrieveRecords
+    enum OperationError: String, Error {
+        case couldNotRetrieveRecords = "Unable to retrieve the records from the storage system."
     }
 
     private let coreDataController: CoreDataPersistenceController
@@ -20,7 +20,7 @@ class WorkoutsDataSource {
         self.coreDataController = coreDataController
     }
 
-    func saveWorkout(_ workout: Workout) -> Result<Void, Error> {
+    func saveWorkout(_ workout: Workout) -> Result<Void, Error> {        
         let viewContext = coreDataController.container.viewContext
         let newItem = WorkoutEntity(context: viewContext)
         newItem.workout = CoreDataWorkout(workout: workout)

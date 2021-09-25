@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		00514E7326FCFDC800D97B21 /* AchivementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00514E7226FCFDC800D97B21 /* AchivementsView.swift */; };
 		00DCDEFE26FED70700913927 /* WorkoutsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DCDEFD26FED70700913927 /* WorkoutsDataSource.swift */; };
+		00DCDF0426FF0AE200913927 /* CheckmarkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DCDF0326FF0AE200913927 /* CheckmarkButton.swift */; };
+		00DCDF0626FF0B5300913927 /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DCDF0526FF0B5300913927 /* WorkoutView.swift */; };
+		00DCDF0826FF0BA800913927 /* WorkoutSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DCDF0726FF0BA800913927 /* WorkoutSchedule.swift */; };
+		00DCDF0A26FF0BB900913927 /* DayWorkoutPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DCDF0926FF0BB900913927 /* DayWorkoutPlan.swift */; };
+		00DCDF0D26FF0C3A00913927 /* Workout+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DCDF0C26FF0C3A00913927 /* Workout+Data.swift */; };
+		00DCDF0F26FF0D6100913927 /* DayWorkoutPlan+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DCDF0E26FF0D6100913927 /* DayWorkoutPlan+Data.swift */; };
 		00E0245926F8FE090050022F /* WorkoutToDataTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E0245826F8FE090050022F /* WorkoutToDataTransformer.swift */; };
 		00E0245B26F9000A0050022F /* CoreDataWorkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E0245A26F9000A0050022F /* CoreDataWorkout.swift */; };
 		00E0246226F911720050022F /* WorkoutEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E0246026F911720050022F /* WorkoutEntity+CoreDataClass.swift */; };
@@ -21,7 +27,7 @@
 		00FB2DFB26F71E06001A7A1B /* RepCount.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 00FB2DF926F71E06001A7A1B /* RepCount.xcdatamodeld */; };
 		00FB2E0626F71E07001A7A1B /* RepCountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FB2E0526F71E07001A7A1B /* RepCountTests.swift */; };
 		00FB2E1126F71E07001A7A1B /* RepCountUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FB2E1026F71E07001A7A1B /* RepCountUITests.swift */; };
-		00FB2E1F26F71EEE001A7A1B /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FB2E1E26F71EEE001A7A1B /* WorkoutView.swift */; };
+		00FB2E1F26F71EEE001A7A1B /* WorkoutDayPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FB2E1E26F71EEE001A7A1B /* WorkoutDayPlanView.swift */; };
 		00FB2E2126F71F32001A7A1B /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FB2E2026F71F32001A7A1B /* Workout.swift */; };
 		00FB2E2326F7465A001A7A1B /* DayWorkoutPlanPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FB2E2226F7465A001A7A1B /* DayWorkoutPlanPresenter.swift */; };
 /* End PBXBuildFile section */
@@ -46,6 +52,12 @@
 /* Begin PBXFileReference section */
 		00514E7226FCFDC800D97B21 /* AchivementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchivementsView.swift; sourceTree = "<group>"; };
 		00DCDEFD26FED70700913927 /* WorkoutsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsDataSource.swift; sourceTree = "<group>"; };
+		00DCDF0326FF0AE200913927 /* CheckmarkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkButton.swift; sourceTree = "<group>"; };
+		00DCDF0526FF0B5300913927 /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
+		00DCDF0726FF0BA800913927 /* WorkoutSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSchedule.swift; sourceTree = "<group>"; };
+		00DCDF0926FF0BB900913927 /* DayWorkoutPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayWorkoutPlan.swift; sourceTree = "<group>"; };
+		00DCDF0C26FF0C3A00913927 /* Workout+Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Workout+Data.swift"; sourceTree = "<group>"; };
+		00DCDF0E26FF0D6100913927 /* DayWorkoutPlan+Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DayWorkoutPlan+Data.swift"; sourceTree = "<group>"; };
 		00E0245826F8FE090050022F /* WorkoutToDataTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutToDataTransformer.swift; sourceTree = "<group>"; };
 		00E0245A26F9000A0050022F /* CoreDataWorkout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataWorkout.swift; sourceTree = "<group>"; };
 		00E0246026F911720050022F /* WorkoutEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkoutEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -64,7 +76,7 @@
 		00FB2E0C26F71E07001A7A1B /* RepCountUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RepCountUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00FB2E1026F71E07001A7A1B /* RepCountUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepCountUITests.swift; sourceTree = "<group>"; };
 		00FB2E1226F71E07001A7A1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00FB2E1E26F71EEE001A7A1B /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
+		00FB2E1E26F71EEE001A7A1B /* WorkoutDayPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDayPlanView.swift; sourceTree = "<group>"; };
 		00FB2E2026F71F32001A7A1B /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		00FB2E2226F7465A001A7A1B /* DayWorkoutPlanPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayWorkoutPlanPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,6 +112,54 @@
 				00DCDEFD26FED70700913927 /* WorkoutsDataSource.swift */,
 			);
 			path = "Data Sources";
+			sourceTree = "<group>";
+		};
+		00DCDEFF26FEDD4500913927 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				00DCDF0126FEDDD900913927 /* Workout Day Plan */,
+				00DCDF0026FEDDC000913927 /* Achievements */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		00DCDF0026FEDDC000913927 /* Achievements */ = {
+			isa = PBXGroup;
+			children = (
+				00514E7226FCFDC800D97B21 /* AchivementsView.swift */,
+			);
+			path = Achievements;
+			sourceTree = "<group>";
+		};
+		00DCDF0126FEDDD900913927 /* Workout Day Plan */ = {
+			isa = PBXGroup;
+			children = (
+				00FB2E1E26F71EEE001A7A1B /* WorkoutDayPlanView.swift */,
+				00DCDF0526FF0B5300913927 /* WorkoutView.swift */,
+				00DCDF0326FF0AE200913927 /* CheckmarkButton.swift */,
+				00FB2E2226F7465A001A7A1B /* DayWorkoutPlanPresenter.swift */,
+			);
+			path = "Workout Day Plan";
+			sourceTree = "<group>";
+		};
+		00DCDF0226FEDDF400913927 /* Domain Models */ = {
+			isa = PBXGroup;
+			children = (
+				00DCDF0B26FF0C2100913927 /* Pre-filled data */,
+				00FB2E2026F71F32001A7A1B /* Workout.swift */,
+				00DCDF0726FF0BA800913927 /* WorkoutSchedule.swift */,
+				00DCDF0926FF0BB900913927 /* DayWorkoutPlan.swift */,
+			);
+			path = "Domain Models";
+			sourceTree = "<group>";
+		};
+		00DCDF0B26FF0C2100913927 /* Pre-filled data */ = {
+			isa = PBXGroup;
+			children = (
+				00DCDF0C26FF0C3A00913927 /* Workout+Data.swift */,
+				00DCDF0E26FF0D6100913927 /* DayWorkoutPlan+Data.swift */,
+			);
+			path = "Pre-filled data";
 			sourceTree = "<group>";
 		};
 		00E0245626F8FCBD0050022F /* Persistence */ = {
@@ -148,10 +208,8 @@
 			children = (
 				00FB2DEE26F71E04001A7A1B /* RepCountApp.swift */,
 				00FB2DF026F71E04001A7A1B /* ContentView.swift */,
-				00FB2E1E26F71EEE001A7A1B /* WorkoutView.swift */,
-				00514E7226FCFDC800D97B21 /* AchivementsView.swift */,
-				00FB2E2226F7465A001A7A1B /* DayWorkoutPlanPresenter.swift */,
-				00FB2E2026F71F32001A7A1B /* Workout.swift */,
+				00DCDF0226FEDDF400913927 /* Domain Models */,
+				00DCDEFF26FEDD4500913927 /* Views */,
 				00E0245626F8FCBD0050022F /* Persistence */,
 				00FB2DF226F71E06001A7A1B /* Assets.xcassets */,
 				00FB2DFC26F71E06001A7A1B /* Info.plist */,
@@ -316,18 +374,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00DCDF0426FF0AE200913927 /* CheckmarkButton.swift in Sources */,
+				00DCDF0D26FF0C3A00913927 /* Workout+Data.swift in Sources */,
 				00E0246326F911720050022F /* WorkoutEntity+CoreDataProperties.swift in Sources */,
+				00DCDF0A26FF0BB900913927 /* DayWorkoutPlan.swift in Sources */,
 				00FB2DF826F71E06001A7A1B /* CoreDataPersistenceController.swift in Sources */,
 				00514E7326FCFDC800D97B21 /* AchivementsView.swift in Sources */,
+				00DCDF0626FF0B5300913927 /* WorkoutView.swift in Sources */,
 				00E0245B26F9000A0050022F /* CoreDataWorkout.swift in Sources */,
 				00E0245926F8FE090050022F /* WorkoutToDataTransformer.swift in Sources */,
 				00FB2DFB26F71E06001A7A1B /* RepCount.xcdatamodeld in Sources */,
+				00DCDF0826FF0BA800913927 /* WorkoutSchedule.swift in Sources */,
 				00FB2DF126F71E04001A7A1B /* ContentView.swift in Sources */,
 				00FB2DEF26F71E04001A7A1B /* RepCountApp.swift in Sources */,
+				00DCDF0F26FF0D6100913927 /* DayWorkoutPlan+Data.swift in Sources */,
 				00DCDEFE26FED70700913927 /* WorkoutsDataSource.swift in Sources */,
 				00E0246226F911720050022F /* WorkoutEntity+CoreDataClass.swift in Sources */,
 				00FB2E2326F7465A001A7A1B /* DayWorkoutPlanPresenter.swift in Sources */,
-				00FB2E1F26F71EEE001A7A1B /* WorkoutView.swift in Sources */,
+				00FB2E1F26F71EEE001A7A1B /* WorkoutDayPlanView.swift in Sources */,
 				00FB2E2126F71F32001A7A1B /* Workout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

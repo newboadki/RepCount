@@ -55,12 +55,11 @@ class DayWorkoutPlanPresenter: ObservableObject {
         switch result {
         case .success(_):
             shouldPresentError = false
-            break
+
         case .failure(let error ):
             errorDescription.title = "Something went wrong"
             errorDescription.message = error.localizedDescription
             shouldPresentError = true
-            break
         }
     }
 

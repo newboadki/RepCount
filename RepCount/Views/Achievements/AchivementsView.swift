@@ -8,11 +8,17 @@
 import SwiftUI
 
 struct AchivementsView: View {
+
+    @EnvironmentObject private var presenter: AchivementsPresenter
+    
     var body: some View {
         VStack {
-            Text("You've completed 120 workout.")
-            Text("You've done 1029 push ups.")
-            Text("You've done 4000 Abs.")
+            ForEach(presenter.achivements) { achivement in
+                Text(achivement.name + " x \(achivement.repCount)")
+            }
+        }
+        .onAppear {
+            presenter.viewDidAppear()
         }
 
     }

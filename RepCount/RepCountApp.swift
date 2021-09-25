@@ -9,17 +9,19 @@ import SwiftUI
 
 @main
 struct RepCountApp: App {
+
+    static let workoutsDataSource = WorkoutsDataSource(coreDataController: CoreDataPersistenceController())
     let persistenceController = CoreDataPersistenceController.shared
+    let achivementsPresenter = AchivementsPresenter(achivementsCalculator: AchivementsCalculator(workoutsDataSource: workoutsDataSource))
     let dayPlanPresenter =  DayWorkoutPlanPresenter(plan: DayWorkoutPlan.basicStrengthConditioningPlan(),
-                                                    workoutsDataSource: WorkoutsDataSource(coreDataController: CoreDataPersistenceController()))
+                                                    workoutsDataSource: workoutsDataSource)
 
     var body: some Scene {
         WindowGroup{
-//            ContentView()
-//                .environment(\.managedObjectContext, persistenceController.container.viewContext)
 
             DayWorkoutPlanView()
                 .environmentObject(dayPlanPresenter)
+                .environmentObject(achivementsPresenter)
         }
     }
 }

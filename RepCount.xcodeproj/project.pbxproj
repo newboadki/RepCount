@@ -15,6 +15,8 @@
 		00DCDF0A26FF0BB900913927 /* DayWorkoutPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DCDF0926FF0BB900913927 /* DayWorkoutPlan.swift */; };
 		00DCDF0D26FF0C3A00913927 /* Workout+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DCDF0C26FF0C3A00913927 /* Workout+Data.swift */; };
 		00DCDF0F26FF0D6100913927 /* DayWorkoutPlan+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DCDF0E26FF0D6100913927 /* DayWorkoutPlan+Data.swift */; };
+		00DCDF1626FF119A00913927 /* AchivementsCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DCDF1526FF119A00913927 /* AchivementsCalculator.swift */; };
+		00DCDF1826FF170D00913927 /* AchivementsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DCDF1726FF170D00913927 /* AchivementsPresenter.swift */; };
 		00E0245926F8FE090050022F /* WorkoutToDataTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E0245826F8FE090050022F /* WorkoutToDataTransformer.swift */; };
 		00E0245B26F9000A0050022F /* CoreDataWorkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E0245A26F9000A0050022F /* CoreDataWorkout.swift */; };
 		00E0246226F911720050022F /* WorkoutEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E0246026F911720050022F /* WorkoutEntity+CoreDataClass.swift */; };
@@ -58,6 +60,8 @@
 		00DCDF0926FF0BB900913927 /* DayWorkoutPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayWorkoutPlan.swift; sourceTree = "<group>"; };
 		00DCDF0C26FF0C3A00913927 /* Workout+Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Workout+Data.swift"; sourceTree = "<group>"; };
 		00DCDF0E26FF0D6100913927 /* DayWorkoutPlan+Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DayWorkoutPlan+Data.swift"; sourceTree = "<group>"; };
+		00DCDF1526FF119A00913927 /* AchivementsCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchivementsCalculator.swift; sourceTree = "<group>"; };
+		00DCDF1726FF170D00913927 /* AchivementsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchivementsPresenter.swift; sourceTree = "<group>"; };
 		00E0245826F8FE090050022F /* WorkoutToDataTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutToDataTransformer.swift; sourceTree = "<group>"; };
 		00E0245A26F9000A0050022F /* CoreDataWorkout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataWorkout.swift; sourceTree = "<group>"; };
 		00E0246026F911720050022F /* WorkoutEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkoutEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -127,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				00514E7226FCFDC800D97B21 /* AchivementsView.swift */,
+				00DCDF1726FF170D00913927 /* AchivementsPresenter.swift */,
 			);
 			path = Achievements;
 			sourceTree = "<group>";
@@ -142,24 +147,49 @@
 			path = "Workout Day Plan";
 			sourceTree = "<group>";
 		};
-		00DCDF0226FEDDF400913927 /* Domain Models */ = {
-			isa = PBXGroup;
-			children = (
-				00DCDF0B26FF0C2100913927 /* Pre-filled data */,
-				00FB2E2026F71F32001A7A1B /* Workout.swift */,
-				00DCDF0726FF0BA800913927 /* WorkoutSchedule.swift */,
-				00DCDF0926FF0BB900913927 /* DayWorkoutPlan.swift */,
-			);
-			path = "Domain Models";
-			sourceTree = "<group>";
-		};
-		00DCDF0B26FF0C2100913927 /* Pre-filled data */ = {
+		00DCDF0B26FF0C2100913927 /* Fixtures */ = {
 			isa = PBXGroup;
 			children = (
 				00DCDF0C26FF0C3A00913927 /* Workout+Data.swift */,
 				00DCDF0E26FF0D6100913927 /* DayWorkoutPlan+Data.swift */,
 			);
-			path = "Pre-filled data";
+			path = Fixtures;
+			sourceTree = "<group>";
+		};
+		00DCDF1126FF10EF00913927 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				00DCDF1326FF112200913927 /* Achievements */,
+				00DCDF1226FF110D00913927 /* Workouts */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		00DCDF1226FF110D00913927 /* Workouts */ = {
+			isa = PBXGroup;
+			children = (
+				00DCDF0B26FF0C2100913927 /* Fixtures */,
+				00FB2E2026F71F32001A7A1B /* Workout.swift */,
+				00DCDF0726FF0BA800913927 /* WorkoutSchedule.swift */,
+				00DCDF0926FF0BB900913927 /* DayWorkoutPlan.swift */,
+			);
+			path = Workouts;
+			sourceTree = "<group>";
+		};
+		00DCDF1326FF112200913927 /* Achievements */ = {
+			isa = PBXGroup;
+			children = (
+				00DCDF1426FF112D00913927 /* Interactors */,
+			);
+			path = Achievements;
+			sourceTree = "<group>";
+		};
+		00DCDF1426FF112D00913927 /* Interactors */ = {
+			isa = PBXGroup;
+			children = (
+				00DCDF1526FF119A00913927 /* AchivementsCalculator.swift */,
+			);
+			path = Interactors;
 			sourceTree = "<group>";
 		};
 		00E0245626F8FCBD0050022F /* Persistence */ = {
@@ -208,7 +238,7 @@
 			children = (
 				00FB2DEE26F71E04001A7A1B /* RepCountApp.swift */,
 				00FB2DF026F71E04001A7A1B /* ContentView.swift */,
-				00DCDF0226FEDDF400913927 /* Domain Models */,
+				00DCDF1126FF10EF00913927 /* Core */,
 				00DCDEFF26FEDD4500913927 /* Views */,
 				00E0245626F8FCBD0050022F /* Persistence */,
 				00FB2DF226F71E06001A7A1B /* Assets.xcassets */,
@@ -377,10 +407,12 @@
 				00DCDF0426FF0AE200913927 /* CheckmarkButton.swift in Sources */,
 				00DCDF0D26FF0C3A00913927 /* Workout+Data.swift in Sources */,
 				00E0246326F911720050022F /* WorkoutEntity+CoreDataProperties.swift in Sources */,
+				00DCDF1626FF119A00913927 /* AchivementsCalculator.swift in Sources */,
 				00DCDF0A26FF0BB900913927 /* DayWorkoutPlan.swift in Sources */,
 				00FB2DF826F71E06001A7A1B /* CoreDataPersistenceController.swift in Sources */,
 				00514E7326FCFDC800D97B21 /* AchivementsView.swift in Sources */,
 				00DCDF0626FF0B5300913927 /* WorkoutView.swift in Sources */,
+				00DCDF1826FF170D00913927 /* AchivementsPresenter.swift in Sources */,
 				00E0245B26F9000A0050022F /* CoreDataWorkout.swift in Sources */,
 				00E0245926F8FE090050022F /* WorkoutToDataTransformer.swift in Sources */,
 				00FB2DFB26F71E06001A7A1B /* RepCount.xcdatamodeld in Sources */,

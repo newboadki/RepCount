@@ -1,5 +1,5 @@
 //
-//  Persistence.swift
+//  CoreDataPersistenceController.swift
 //  RepCount
 //
 //  Created by Borja Arias Drake on 19.09.2021..
@@ -7,11 +7,11 @@
 
 import CoreData
 
-struct PersistenceController {
-    static let shared = PersistenceController()
+struct CoreDataPersistenceController {
+    static let shared = CoreDataPersistenceController()
 
-    static var preview: PersistenceController = {
-        let result = PersistenceController(inMemory: true)
+    static var preview: CoreDataPersistenceController = {
+        let result = CoreDataPersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
         for _ in 0..<10 {
             let newItem = Item(context: viewContext)

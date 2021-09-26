@@ -47,6 +47,13 @@ class DayWorkoutPlanPresenter: ObservableObject {
         }
 
         plan.workouts[wi].workout.exercises[ei].isCompleted.toggle()
+        if plan.workouts[wi].workout.allExercisesCompleted {
+            // Save
+            // Update the UI with some message or dissabling the workout
+            // Disable save
+        } else {
+            // It should not be possible to edit the workout once completed
+        }
     }
 
     func saveWorkout(_ workout: Workout) {

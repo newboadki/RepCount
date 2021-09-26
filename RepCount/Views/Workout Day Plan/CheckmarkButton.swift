@@ -7,13 +7,35 @@
 
 import SwiftUI
 
+// MARK: - PREFERENCES
+//struct WorkoutChangedCopmpletionStatePreference: PreferenceKey {
+//    static var defaultValue: Bool = false
+//    static func reduce(value: inout Bool, nextValue: () -> Bool) {
+//        value = value && nextValue()
+//    }
+//}
+//
+//extension View {
+//    func workoutChangedCompletionState(_ value: Bool) -> some View {
+//        preference(key: WorkoutChangedCopmpletionStatePreference.self, value: value)
+//    }
+//}
+
 struct CheckmarkButton: View {
 
     let workout: Workout
     let exercise: Exercise
+    let isDisabled: Bool
     @EnvironmentObject private var presenter: DayWorkoutPlanPresenter
 
+    private var color: Color {
+        get {
+            isDisabled ? .gray.opacity(0.4) : .blue
+        }
+    }
+
     var body: some View {
+
         Button(action: {
             presenter.setIsCompleteForExercise(exercise: exercise, workout: workout)
         }, label: {
@@ -22,13 +44,14 @@ struct CheckmarkButton: View {
             if isOn {
                 Image(systemName: "checkmark.circle.fill")
                     .font(.title)
-                    .foregroundColor(.blue)
+                    .foregroundColor(color)
             } else {
                 Image(systemName: "circle")
                     .font(.title)
-                    .foregroundColor(.blue)
+                    .foregroundColor(color)
             }
         })
+        .disabled(self.isDisabled)
     }
 }
 
@@ -39,6 +62,7 @@ struct CheckmarkButton_Previews: PreviewProvider {
 
     static var previews: some View {
         CheckmarkButton(workout: workout,
-                        exercise: exercise)
+                        exercise: exercise,
+                        isDisabled: false)
     }
 }

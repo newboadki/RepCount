@@ -17,6 +17,7 @@ class DayWorkoutPlanPresenter: ObservableObject {
 
     @Published var plan: DayWorkoutPlan
     @Published var shouldPresentError = false
+
     var errorDescription = ErrorDescription()
 
     private let workoutsDataSource: WorkoutsDataSource
@@ -49,6 +50,7 @@ class DayWorkoutPlanPresenter: ObservableObject {
         plan.workouts[wi].workout.exercises[ei].isCompleted.toggle()
         if plan.workouts[wi].workout.allExercisesCompleted {
             // Save
+            self.saveWorkout(plan.workouts[wi].workout)
             // Update the UI with some message or dissabling the workout
             // Disable save
         } else {

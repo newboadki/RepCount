@@ -22,39 +22,54 @@ struct WorkoutView: View {
 
                 Spacer()
 
-                Button(action: {
-                    self.presenter.saveWorkout(workout)
-                }, label: {
-                    Text("Save")
+                if workout.allExercisesCompleted {
+                    Text("COMPLETED")
+                        .font(.system(size: 11))
                         .bold()
                         .foregroundColor(.white)
-                })
-                    .padding(8)
-                    .background(RoundedRectangle(cornerRadius: 8)
-                                    .fill(Color.orange))
+                        .padding(5)
+                        .background(RoundedRectangle(cornerRadius: 16)
+                                        .fill(Color.orange))
+                }
             }
 
             VStack(alignment: .leading) {
                 ForEach(workout.exercises) { exercise in
-                    HStack {
-                        CheckmarkButton(workout: workout, exercise: exercise)
-                        Text("\(exercise.name) x \(exercise.repCountGoal)")
-                            .font(.system(size: 17))
-                    }.padding(.vertical, 2)
+                    WorkoutRow(workout: workout, exercise: exercise)
                 }
-            }
-            .alert(isPresented: $presenter.shouldPresentError) {
-                Alert(title: Text(presenter.errorDescription.title),
-                      message: Text(presenter.errorDescription.message),
-                      dismissButton: .default(Text("OK")))
             }
         }
         .padding(20)
+        .alert(isPresented: $presenter.shouldPresentError) {
+            Alert(title: Text(presenter.errorDescription.title),
+                  message: Text(presenter.errorDescription.message),
+                  dismissButton: .default(Text("OK")))
+        }
     }
 }
 
 struct WorkoutView_Previews: PreviewProvider {
     static var previews: some View {
         WorkoutView(workout: Workout.basicStrengthConditioning(workoutId: 0))
+    }
+}
+
+struct WorkoutRow: View {
+
+    let workout: Workout
+    let exercise: Exercise
+
+    var body: some View {
+        HStack {
+
+            CheckmarkButton(workout: workout,
+                            exercise: exercise,
+                            isDisabled: self.workout.allExercisesCompleted)
+
+            Text("\(exercise.name) x \(exercise.repCountGoal)")
+                .font(.system(size: 17))
+                .foregroundColor(self.workout.allExercisesCompleted ? .gray.opacity(0.4) : .black)
+        }
+        .padding(.vertical, 2)
     }
 }

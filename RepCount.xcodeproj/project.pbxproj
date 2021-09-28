@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		00514E7326FCFDC800D97B21 /* AchivementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00514E7226FCFDC800D97B21 /* AchivementsView.swift */; };
+		00BC839827036EC0007FF6D9 /* Date+Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BC839727036EC0007FF6D9 /* Date+Formatting.swift */; };
+		00BC839A27036EDB007FF6D9 /* Array+Uniquing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BC839927036EDB007FF6D9 /* Array+Uniquing.swift */; };
 		00DCDEFE26FED70700913927 /* WorkoutsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DCDEFD26FED70700913927 /* WorkoutsDataSource.swift */; };
 		00DCDF0426FF0AE200913927 /* CheckmarkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DCDF0326FF0AE200913927 /* CheckmarkButton.swift */; };
 		00DCDF0626FF0B5300913927 /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DCDF0526FF0B5300913927 /* WorkoutView.swift */; };
@@ -53,6 +55,8 @@
 
 /* Begin PBXFileReference section */
 		00514E7226FCFDC800D97B21 /* AchivementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchivementsView.swift; sourceTree = "<group>"; };
+		00BC839727036EC0007FF6D9 /* Date+Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Formatting.swift"; sourceTree = "<group>"; };
+		00BC839927036EDB007FF6D9 /* Array+Uniquing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Uniquing.swift"; sourceTree = "<group>"; };
 		00DCDEFD26FED70700913927 /* WorkoutsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsDataSource.swift; sourceTree = "<group>"; };
 		00DCDF0326FF0AE200913927 /* CheckmarkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkButton.swift; sourceTree = "<group>"; };
 		00DCDF0526FF0B5300913927 /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
@@ -110,6 +114,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00BC839627036EB0007FF6D9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				00BC839727036EC0007FF6D9 /* Date+Formatting.swift */,
+				00BC839927036EDB007FF6D9 /* Array+Uniquing.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		00DCDEFC26FED6E500913927 /* Data Sources */ = {
 			isa = PBXGroup;
 			children = (
@@ -239,6 +252,7 @@
 			children = (
 				00FB2DEE26F71E04001A7A1B /* RepCountApp.swift */,
 				00FB2DF026F71E04001A7A1B /* ContentView.swift */,
+				00BC839627036EB0007FF6D9 /* Extensions */,
 				00DCDF1126FF10EF00913927 /* Core */,
 				00DCDEFF26FEDD4500913927 /* Views */,
 				00E0245626F8FCBD0050022F /* Persistence */,
@@ -404,6 +418,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00BC839827036EC0007FF6D9 /* Date+Formatting.swift in Sources */,
 				00DCDF0426FF0AE200913927 /* CheckmarkButton.swift in Sources */,
 				00DCDF0D26FF0C3A00913927 /* Workout+Data.swift in Sources */,
 				00E0246326F911720050022F /* WorkoutEntity+CoreDataProperties.swift in Sources */,
@@ -413,6 +428,7 @@
 				00514E7326FCFDC800D97B21 /* AchivementsView.swift in Sources */,
 				00DCDF0626FF0B5300913927 /* WorkoutView.swift in Sources */,
 				00DCDF1826FF170D00913927 /* AchivementsPresenter.swift in Sources */,
+				00BC839A27036EDB007FF6D9 /* Array+Uniquing.swift in Sources */,
 				00E0245B26F9000A0050022F /* CoreDataWorkout.swift in Sources */,
 				00E0245926F8FE090050022F /* WorkoutToDataTransformer.swift in Sources */,
 				00FB2DFB26F71E06001A7A1B /* RepCount.xcdatamodeld in Sources */,

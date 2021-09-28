@@ -8,10 +8,11 @@
 import Foundation
 import SwiftUI
 
-struct Workout: Identifiable, Codable {
+struct Workout: Identifiable, Codable, Hashable {
 
     let id: Int
-    var name: String
+    let name: String
+    var date: Date?
     var exercises: [Exercise]
 
     /// An alternative version with better performance would be for the Workout class to observe all exercises.
@@ -26,7 +27,7 @@ struct Workout: Identifiable, Codable {
     }
 }
 
-struct Exercise: Identifiable, Codable {
+struct Exercise: Identifiable, Codable, Equatable, Hashable {
 
     let id: Int
     let name: String

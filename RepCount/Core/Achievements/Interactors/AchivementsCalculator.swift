@@ -45,6 +45,11 @@ struct AchivementsCalculator {
             }
         }
         achivements["Workouts completed"] = workouts.count
+
+        let workoutsFromdistinctDays = workouts.uniqued { $0.date?.toyyyyMMddStringRepresentation() }
+
+        achivements["# of days worked out"] = workoutsFromdistinctDays.count
+
         return achivements
     }
 }

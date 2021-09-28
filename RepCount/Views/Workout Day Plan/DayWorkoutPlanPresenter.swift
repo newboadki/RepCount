@@ -59,7 +59,9 @@ class DayWorkoutPlanPresenter: ObservableObject {
     }
 
     func saveWorkout(_ workout: Workout) {
-        let result = workoutsDataSource.saveWorkout(workout)
+        var workoutCopy = workout
+        workoutCopy.date = Date()
+        let result = workoutsDataSource.saveWorkout(workoutCopy)
 
         switch result {
         case .success(_):

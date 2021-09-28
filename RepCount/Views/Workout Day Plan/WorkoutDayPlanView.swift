@@ -17,7 +17,7 @@ struct DayWorkoutPlanView: View {
                 VStack(alignment: .leading) {
                     ForEach(presenter.plan.workouts) { workoutSchedule in
                         VStack {
-                            Text(workoutSchedule.timeOfDay.rawValue.capitalized)
+                            Text(workoutSchedule.timeOfDay.rawValue.capitalized  + " " +  emojiCodeString(forTimeOfDay: workoutSchedule.timeOfDay))
                                 .font(.title)
                             WorkoutView(workout: workoutSchedule.workout)
                         }
@@ -36,6 +36,15 @@ struct DayWorkoutPlanView: View {
                 )
             }
             .padding(.vertical, 20)
+        }
+    }
+
+    private func emojiCodeString(forTimeOfDay time:  WorkoutSchedule.TimeOfDay) -> String {
+        switch time {
+        case .morning:
+            return "\u{1F305} \u{1F4AA}"
+        case .evening:
+            return "\u{1F303} \u{1F396} "
         }
     }
 }

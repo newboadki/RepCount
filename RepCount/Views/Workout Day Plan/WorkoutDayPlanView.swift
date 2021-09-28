@@ -36,9 +36,6 @@ struct DayWorkoutPlanView: View {
                 )
             }
             .padding(.vertical, 20)
-            .onAppear {
-                presenter.loadWorkouts()
-            }
         }
     }
 }

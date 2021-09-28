@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 struct AchivementsCalculator {
 
@@ -22,34 +23,28 @@ struct AchivementsCalculator {
         self.workoutsDataSource = workoutsDataSource
     }
 
-    func achievements() -> Result<Achievements, Error> {
-        let results = workoutsDataSource.allWorkouts()
+    func achievements() -> AnyPublisher<Achievements, Error> {
+        return workoutsDataSource.allWorkouts()
+            .map(workoutToAchievementsDictionaryMapper)
+            .eraseToAnyPublisher()
+    }
 
-
-        switch results {
-            case .success(let workouts):
-                var achivements = [String : Int]()
-                for workout in workouts {
-                    for exercise in workout.exercises {
-                        guard exercise.isCompleted else {
-                            continue
-                        }
-
-                        if let previousValue = achivements[exercise.name] {
-                            achivements[exercise.name] = previousValue + exercise.repCountGoal
-                        } else {
-                            achivements[exercise.name] = exercise.repCountGoal
-                        }
-                    }
+    private func workoutToAchievementsDictionaryMapper(_ workouts: [Workout]) -> Achievements {
+        var achivements = [String : Int]()
+        for workout in workouts {
+            for exercise in workout.exercises {
+                guard exercise.isCompleted else {
+                    continue
                 }
 
-                achivements["Workouts completed"] = workouts.count
-
-                return .success(achivements)
-
-            case .failure(_):
-                return .failure(OperationError.couldNotRetrieveRecords)
+                if let previousValue = achivements[exercise.name] {
+                    achivements[exercise.name] = previousValue + exercise.repCountGoal
+                } else {
+                    achivements[exercise.name] = exercise.repCountGoal
+                }
+            }
         }
-
+        achivements["Workouts completed"] = workouts.count
+        return achivements
     }
 }

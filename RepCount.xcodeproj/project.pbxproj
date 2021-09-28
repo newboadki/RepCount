@@ -204,6 +204,7 @@
 		00E0245726F8FCC50050022F /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				00FB2DF926F71E06001A7A1B /* RepCount.xcdatamodeld */,
 				00FB2DF726F71E06001A7A1B /* CoreDataPersistenceController.swift */,
 				00E0246026F911720050022F /* WorkoutEntity+CoreDataClass.swift */,
 				00E0246126F911720050022F /* WorkoutEntity+CoreDataProperties.swift */,
@@ -243,7 +244,6 @@
 				00E0245626F8FCBD0050022F /* Persistence */,
 				00FB2DF226F71E06001A7A1B /* Assets.xcassets */,
 				00FB2DFC26F71E06001A7A1B /* Info.plist */,
-				00FB2DF926F71E06001A7A1B /* RepCount.xcdatamodeld */,
 				00FB2DF426F71E06001A7A1B /* Preview Content */,
 			);
 			path = RepCount;

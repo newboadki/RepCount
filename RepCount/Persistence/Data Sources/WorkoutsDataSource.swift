@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreData
+import Combine
 
 class WorkoutsDataSource {
 
@@ -33,18 +34,22 @@ class WorkoutsDataSource {
         }
     }
 
-    func allWorkouts() -> Result<[Workout], Error> {
-        let context = CoreDataPersistenceController.shared.container.newBackgroundContext()
-        let request = NSFetchRequest<WorkoutEntity>(entityName: "WorkoutEntity")
+    func allWorkouts() -> Future<[Workout], Error> {
+        return Future { promise in
+            let context = CoreDataPersistenceController.shared.container.newBackgroundContext()
+            context.perform {
+                let request = NSFetchRequest<WorkoutEntity>(entityName: "WorkoutEntity")
 
-        do {
-            let result = try context.fetch(request)
-            let allWorkouts = result.compactMap { workoutEntity in
-                workoutEntity.workout?.workout
+                do {
+                    let result = try context.fetch(request)
+                    let allWorkouts = result.compactMap { workoutEntity in
+                        workoutEntity.workout?.workout
+                    }
+                    promise(.success(allWorkouts))
+                } catch {
+                    promise(.failure(error))
+                }
             }
-            return .success(allWorkouts)
-        } catch {
-            return .failure(OperationError.couldNotRetrieveRecords)
         }
     }
 }

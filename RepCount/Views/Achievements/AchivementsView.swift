@@ -18,7 +18,7 @@ struct AchivementsView: View {
             }
         }
         .onAppear {
-            presenter.viewDidAppear()
+            presenter.onAppear()
         }
 
     }

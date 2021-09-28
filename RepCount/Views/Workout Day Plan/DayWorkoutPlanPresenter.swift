@@ -71,15 +71,4 @@ class DayWorkoutPlanPresenter: ObservableObject {
             shouldPresentError = true
         }
     }
-
-    func loadWorkouts() {
-        let result = workoutsDataSource.allWorkouts()
-        switch result {
-        case .success(let wks):
-            print(wks)
-            break
-        case .failure(_):
-            break
-        }
-    }
 }

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct AchivementViewModel: Identifiable {
 
@@ -25,24 +26,29 @@ class AchivementsPresenter: ObservableObject {
     @Published var achivements = [AchivementViewModel]()
 
     private let achivementsCalculator: AchivementsCalculator
+    private var cancellables = Set<AnyCancellable>()
 
     init(achivementsCalculator: AchivementsCalculator) {
         self.achivementsCalculator = achivementsCalculator
     }
 
-    func viewDidAppear() {
-        let results = achivementsCalculator.achievements()
-
-        switch results {
-            case .success(let retrievedAchivements):
-            var newAchivements = [AchivementViewModel]()
-            for (key, value) in retrievedAchivements {
-                newAchivements.append(AchivementViewModel(name: key, repCount: value))
+    func onAppear() {
+        achivementsCalculator.achievements()
+            .receive(on: DispatchQueue.global())
+            .map(achivementsDictionaryToModelMapper)
+            .catch { error in
+                Just([AchivementViewModel]())
             }
-            self.achivements = newAchivements
+            .receive(on: DispatchQueue.main)
+            .assign(to: \.achivements, on: self)
+            .store(in: &cancellables)
+    }
 
-            case .failure(let error):
-                break
+    private func achivementsDictionaryToModelMapper(_ achivementsDictionary: [String : Int]) -> [AchivementViewModel] {
+        var newAchivements = [AchivementViewModel]()
+        for (key, value) in achivementsDictionary {
+            newAchivements.append(AchivementViewModel(name: key, repCount: value))
         }
+        return newAchivements
     }
 }

@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 import Combine
 
-class WorkoutsDataSource {
+class CoreDataWorkoutsDataSource: WorkoutsDataSource {
 
     enum OperationError: String, Error {
         case couldNotRetrieveRecords = "Unable to retrieve the records from the storage system."

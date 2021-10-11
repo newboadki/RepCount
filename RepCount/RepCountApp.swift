@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct RepCountApp: App {
 
-    static let workoutsDataSource = WorkoutsDataSource(coreDataController: CoreDataPersistenceController())
+    static let workoutsDataSource = CoreDataWorkoutsDataSource(coreDataController: CoreDataPersistenceController())
     let persistenceController = CoreDataPersistenceController.shared
     let achivementsPresenter = AchivementsPresenter(achivementsCalculator: AchivementsCalculator(workoutsDataSource: workoutsDataSource))
     let dayPlanPresenter =  DayWorkoutPlanPresenter(plan: DayWorkoutPlan.basicStrengthConditioningPlan(),

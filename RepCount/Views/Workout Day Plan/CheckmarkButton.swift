@@ -7,25 +7,14 @@
 
 import SwiftUI
 
-// MARK: - PREFERENCES
-//struct WorkoutChangedCopmpletionStatePreference: PreferenceKey {
-//    static var defaultValue: Bool = false
-//    static func reduce(value: inout Bool, nextValue: () -> Bool) {
-//        value = value && nextValue()
-//    }
-//}
-//
-//extension View {
-//    func workoutChangedCompletionState(_ value: Bool) -> some View {
-//        preference(key: WorkoutChangedCopmpletionStatePreference.self, value: value)
-//    }
-//}
-
 struct CheckmarkButton: View {
 
-    let workout: Workout
-    let exercise: Exercise
+    let exercise: ExerciseViewModel
     let isDisabled: Bool
+    // TODO: CAN we use a binding instead of the presenteer
+    // TODO: Exploore what a binding to a position in an array does
+    //   @Published var array: [Int] = []
+    //   $presenter.array[0]  -> Binding<Int>
     @EnvironmentObject private var presenter: DayWorkoutPlanPresenter
 
     private var color: Color {
@@ -37,7 +26,7 @@ struct CheckmarkButton: View {
     var body: some View {
 
         Button(action: {
-            presenter.setIsCompleteForExercise(exercise: exercise, workout: workout)
+            presenter.setIsCompleteForExercise(at: exercise.id)
         }, label: {
             let isOn = exercise.isCompleted
 
@@ -58,11 +47,12 @@ struct CheckmarkButton: View {
 struct CheckmarkButton_Previews: PreviewProvider {
 
     static private let workout = Workout.basicStrengthConditioning(workoutId: 0)
-    static private let exercise = workout.exercises[0]
+    static private let exercise = ExerciseViewModel(id: IndexPath(indexes: [0,0]),
+                                                    title: workout.exercises[0].name,
+                                                    isEnabled: true,
+                                                    isCompleted: false)
 
     static var previews: some View {
-        CheckmarkButton(workout: workout,
-                        exercise: exercise,
-                        isDisabled: false)
+        CheckmarkButton(exercise: exercise, isDisabled: false)
     }
 }

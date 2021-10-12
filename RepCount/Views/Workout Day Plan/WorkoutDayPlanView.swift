@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+
+
 struct DayWorkoutPlanView: View {
 
     @EnvironmentObject private var presenter: DayWorkoutPlanPresenter
@@ -15,11 +17,11 @@ struct DayWorkoutPlanView: View {
         NavigationView {
             ScrollView {
                 VStack(alignment: .leading) {
-                    ForEach(presenter.plan.workouts) { workoutSchedule in
+                    ForEach(presenter.workoutViewModels) { workout in
                         VStack {
-                            Text(workoutSchedule.timeOfDay.rawValue.capitalized  + " " +  emojiCodeString(forTimeOfDay: workoutSchedule.timeOfDay))
+                            Text(workout.title)
                                 .font(.title)
-                            WorkoutView(workout: workoutSchedule.workout)
+                            WorkoutView(workout: workout)
                         }
                     }
                 }
@@ -48,8 +50,6 @@ struct DayWorkoutPlanView: View {
         }
     }
 }
-
-
 
 struct DayWorkoutPlanView_Previews: PreviewProvider {
     static var previews: some View {

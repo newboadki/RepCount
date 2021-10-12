@@ -10,7 +10,7 @@ import SwiftUI
 
 struct Workout: Identifiable, Codable, Hashable {
 
-    let id: Int
+    let id: IndexPath
     let name: String
     var date: Date?
     var exercises: [Exercise]
@@ -25,12 +25,26 @@ struct Workout: Identifiable, Codable, Hashable {
             }
         }
     }
+
+    func modifying(id: IndexPath? = nil, name: String? = nil, date: Date? = nil, exercises: [Exercise]? = nil) -> Workout {
+        return Workout(id: id ?? self.id,
+                       name: name ?? self.name,
+                       date: date ?? self.date,
+                       exercises: exercises ?? self.exercises)
+    }
 }
 
 struct Exercise: Identifiable, Codable, Equatable, Hashable {
 
-    let id: Int
+    let id: IndexPath
     let name: String
     let repCountGoal: Int
     var isCompleted: Bool = false
+
+    func modifying(id: IndexPath? = nil, name: String? = nil, repCountGoal: Int? = nil, isCompleted: Bool? = nil) -> Exercise {
+        return Exercise(id: id ?? self.id,
+                        name: name ?? self.name,
+                        repCountGoal: repCountGoal ?? self.repCountGoal,
+                        isCompleted: isCompleted ?? self.isCompleted)
+    }
 }

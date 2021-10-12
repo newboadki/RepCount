@@ -8,51 +8,75 @@
 import SwiftUI
 import CoreData
 
+struct WorkoutScheduleViewModel {
+    let title: String
+    let workouts: [WorkoutViewModel]
+}
+
+struct WorkoutViewModel: Identifiable {
+    let id: IndexPath
+    let title: String
+    var exercises: [ExerciseViewModel]
+
+    var allExercisesCompleted: Bool {
+        get {
+            exercises.reduce(true) { partialResult, exercise in
+                partialResult && exercise.isCompleted
+            }
+        }
+    }
+}
+
+struct ExerciseViewModel: Identifiable {
+    let id: IndexPath
+    let title: String
+    var isEnabled: Bool
+    var isCompleted: Bool
+}
+
 class DayWorkoutPlanPresenter: ObservableObject {
 
     struct ErrorDescription {
         var title: String = ""
         var message: String = ""
     }
-
-    @Published var plan: DayWorkoutPlan
+    
+    @Published var workoutViewModels: [WorkoutViewModel]
     @Published var shouldPresentError = false
-
     var errorDescription = ErrorDescription()
 
+    private var plan: DayWorkoutPlan
     private let workoutsDataSource: WorkoutsDataSource
 
     init(plan: DayWorkoutPlan, workoutsDataSource: WorkoutsDataSource) {
+        self.workoutViewModels = DayWorkoutPlanPresenter.map(plan: plan)
         self.plan = plan
         self.workoutsDataSource = workoutsDataSource
     }
 
-    func setIsCompleteForExercise(exercise: Exercise, workout: Workout) {
-
-        let allWorkouts = plan.workouts.compactMap { schedule in
-            schedule.workout
-        }
-
-        let wkIndex = allWorkouts.firstIndex { wk in
-            wk.id == workout.id
-        }
-
-        let exIndex = workout.exercises.firstIndex { e in
-            e.id == exercise.id
-        }
-
-        guard let wi = wkIndex,
-              let ei = exIndex
-        else {
+    func setIsCompleteForExercise(at indexPath: IndexPath) {
+        // Checks before proceeding
+        guard indexPath.count == 2 else {
             return
         }
 
-        plan.workouts[wi].workout.exercises[ei].isCompleted.toggle()
-        if plan.workouts[wi].workout.allExercisesCompleted {
+        guard let workoutIndex = indexPath.first else {
+            return
+        }
+
+        // Update the view model
+        let exerciseIndex = indexPath[1]
+        self.workoutViewModels[workoutIndex].exercises[exerciseIndex].isCompleted.toggle()
+        self.workoutViewModels[workoutIndex].exercises[exerciseIndex].isEnabled = !plan.workouts[workoutIndex].workout.allExercisesCompleted
+
+        // Save the completed workout
+        if self.workoutViewModels[workoutIndex].allExercisesCompleted {
             // Save
-            self.saveWorkout(plan.workouts[wi].workout)
-            // Update the UI with some message or dissabling the workout
-            // Disable save
+            if let workoutForSaving = Self.map(workoutViewModel: self.workoutViewModels[workoutIndex], plan: self.plan) {
+                self.saveWorkout(workoutForSaving)
+                // Update the UI with some message or dissabling the workout
+                // Disable save
+            }
         } else {
             // It should not be possible to edit the workout once completed
         }
@@ -73,4 +97,52 @@ class DayWorkoutPlanPresenter: ObservableObject {
             shouldPresentError = true
         }
     }
+
+    private static func map(plan: DayWorkoutPlan) -> [WorkoutViewModel] {
+        var mappedWorkouts = [WorkoutViewModel]()
+        for (workoutIndex, workoutSchedule) in plan.workouts.enumerated() {
+            var mappedExercises = [ExerciseViewModel]()
+            for (exerciseIndex, exercise) in workoutSchedule.workout.exercises.enumerated() {
+                mappedExercises.append(ExerciseViewModel(id: IndexPath(indexes: [workoutIndex, exerciseIndex]),
+                                                         title: exercise.name + "" + "\(exercise.repCountGoal)",
+                                                         isEnabled: !workoutSchedule.workout.allExercisesCompleted,
+                                                         isCompleted: exercise.isCompleted))
+            }
+
+            mappedWorkouts.append(WorkoutViewModel(id: IndexPath(indexes: [workoutIndex]),
+                                                   title: workoutSchedule.workout.name,
+                                                   exercises: mappedExercises))
+        }
+
+        return mappedWorkouts
+    }
+
+    private static func map(workoutViewModel: WorkoutViewModel, plan: DayWorkoutPlan) -> Workout? {
+        var mappedExercises = [Exercise]()
+        for exerciseViewModel in workoutViewModel.exercises {
+            let allExercises = plan.workouts.flatMap { workoutSchedule in
+                return workoutSchedule.workout.exercises
+            }
+            if let soughtExercise = allExercises.first(where: { currentExercise in
+                currentExercise.id == exerciseViewModel.id
+            }) {
+                let modifiedExercise = soughtExercise.modifying(isCompleted: exerciseViewModel.isCompleted)
+                mappedExercises.append(modifiedExercise)
+            }
+        }
+
+        let workouts = plan.workouts.map { schedule in
+            return schedule.workout
+        }
+
+        if let soughtWorkout = workouts.first(where: { wk in
+            wk.id == workoutViewModel.id
+        }) {
+            let modifiedWorkout = soughtWorkout.modifying(exercises: mappedExercises)
+            return modifiedWorkout
+        }
+
+        return nil
+    }
+
 }

@@ -9,14 +9,14 @@ import SwiftUI
 
 struct WorkoutView: View {
 
-    let workout: Workout
+    let workout: WorkoutViewModel
     @EnvironmentObject private var presenter: DayWorkoutPlanPresenter
 
     var body: some View {
         VStack(alignment: .leading) {
 
             HStack {
-                Text(workout.name)
+                Text(workout.title)
                     .font(.headline)
                     .padding(.vertical, 5)
 
@@ -50,23 +50,26 @@ struct WorkoutView: View {
 
 struct WorkoutView_Previews: PreviewProvider {
     static var previews: some View {
-        WorkoutView(workout: Workout.basicStrengthConditioning(workoutId: 0))
+        WorkoutView(workout: WorkoutViewModel(id: IndexPath(indexes: [0]),
+                                              title: "",
+                                              exercises: [ExerciseViewModel(id: IndexPath(indexes: [0, 0]), title: "Exercise 1", isEnabled: true, isCompleted: false)]))
+            .environmentObject(DayWorkoutPlanPresenter(plan: DayWorkoutPlan(workouts: []),
+                                                       workoutsDataSource: CoreDataWorkoutsDataSource(coreDataController: CoreDataPersistenceController())))
     }
 }
 
 struct WorkoutRow: View {
 
-    let workout: Workout
-    let exercise: Exercise
+    let workout: WorkoutViewModel
+    let exercise: ExerciseViewModel
 
     var body: some View {
         HStack {
 
-            CheckmarkButton(workout: workout,
-                            exercise: exercise,
+            CheckmarkButton(exercise: exercise,
                             isDisabled: self.workout.allExercisesCompleted)
 
-            Text("\(exercise.name) x \(exercise.repCountGoal)")
+            Text(exercise.title)
                 .font(.system(size: 17))
                 .foregroundColor(self.workout.allExercisesCompleted ? .gray.opacity(0.4) : .black)
         }

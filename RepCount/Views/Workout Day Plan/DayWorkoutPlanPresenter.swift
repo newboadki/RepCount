@@ -46,16 +46,16 @@ class DayWorkoutPlanPresenter: ObservableObject {
     var errorDescription = ErrorDescription()
 
     private var plan: DayWorkoutPlan!
-    private let workoutsPersistenceDataSource: WorkoutsPersistenceStorageDataSource
     private let workoutTemplateDataSource: WorkoutTemplatesDataSource
+    private let processExerciseCompletion: ProcessExerciseCompletionInteractor
 
     init(plan: DayWorkoutPlan,
-         workoutsPersistenceDataSource: WorkoutsPersistenceStorageDataSource,
-         workoutTemplateDataSource: WorkoutTemplatesDataSource) {
-        self.workoutViewModels = DayWorkoutPlanPresenter.map(plan: plan)
-        self.workoutsPersistenceDataSource = workoutsPersistenceDataSource
+         workoutTemplateDataSource: WorkoutTemplatesDataSource,
+         processExerciseCompletion: ProcessExerciseCompletionInteractor) {
+        self.workoutViewModels = DayWorkoutPlanPresenter.map(plan: plan)        
         self.workoutTemplateDataSource = workoutTemplateDataSource
         self.plan = self.workoutTemplateDataSource.basicStrengthConditioningPlan()
+        self.processExerciseCompletion = processExerciseCompletion
     }
 
     func setIsCompleteForExercise(at indexPath: IndexPath) {
@@ -73,32 +73,17 @@ class DayWorkoutPlanPresenter: ObservableObject {
         self.workoutViewModels[workoutIndex].exercises[exerciseIndex].isCompleted.toggle()
         self.workoutViewModels[workoutIndex].exercises[exerciseIndex].isEnabled = !plan.workouts[workoutIndex].workout.allExercisesCompleted
 
-        // Save the completed workout
-        if self.workoutViewModels[workoutIndex].allExercisesCompleted {
-            // Save
-            if let workoutForSaving = Self.map(workoutViewModel: self.workoutViewModels[workoutIndex], plan: self.plan) {
-                self.saveWorkout(workoutForSaving)
-                // Update the UI with some message or dissabling the workout
-                // Disable save
+        // Process the completion event
+        if let workoutDomainModel = Self.map(workoutViewModel: self.workoutViewModels[workoutIndex], plan: self.plan) {
+            let processingResult = self.processExerciseCompletion.processExerciseCompletion(in: workoutDomainModel)
+            switch processingResult {
+                case .failure(let error):
+                    errorDescription.title = "Something went wrong"
+                    errorDescription.message = error.localizedDescription
+                    shouldPresentError = true
+                case .success(_):
+                    shouldPresentError = false
             }
-        } else {
-            // It should not be possible to edit the workout once completed
-        }
-    }
-
-    func saveWorkout(_ workout: Workout) {
-        var workoutCopy = workout
-        workoutCopy.date = Date()
-        let result = workoutsPersistenceDataSource.saveWorkout(workoutCopy)
-
-        switch result {
-        case .success(_):
-            shouldPresentError = false
-
-        case .failure(let error ):
-            errorDescription.title = "Something went wrong"
-            errorDescription.message = error.localizedDescription
-            shouldPresentError = true
         }
     }
 

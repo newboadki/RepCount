@@ -14,8 +14,7 @@ struct RepCountApp: App {
     let persistenceController = CoreDataPersistenceController.shared
     let achivementsPresenter = AchivementsPresenter(achivementsCalculator: AchivementsCalculator(workoutsDataSource: workoutsDataSource))
     let dayPlanPresenter =  DayWorkoutPlanPresenter(plan: StaticWorkoutTemplatesDataSource().basicStrengthConditioningPlan(),
-                                                    workoutsPersistenceDataSource: workoutsDataSource,
-                                                    workoutTemplateDataSource: StaticWorkoutTemplatesDataSource())
+                                                    workoutTemplateDataSource: StaticWorkoutTemplatesDataSource(), processExerciseCompletion: ProcessExerciseCompletionInteractor(workoutsPersistenceDataSource: workoutsDataSource))
 
     var body: some Scene {
         WindowGroup{

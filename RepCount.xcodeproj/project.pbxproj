@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		00514E7326FCFDC800D97B21 /* AchivementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00514E7226FCFDC800D97B21 /* AchivementsView.swift */; };
+		0098807D2716A5B300091622 /* WorkoutTemplatesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0098807C2716A5B300091622 /* WorkoutTemplatesDataSource.swift */; };
+		0098807F2716A5C200091622 /* StaticWorkoutTemplatesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0098807E2716A5C200091622 /* StaticWorkoutTemplatesDataSource.swift */; };
 		00BC839827036EC0007FF6D9 /* Date+Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BC839727036EC0007FF6D9 /* Date+Formatting.swift */; };
 		00BC839A27036EDB007FF6D9 /* Array+Uniquing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BC839927036EDB007FF6D9 /* Array+Uniquing.swift */; };
 		00DCDEFE26FED70700913927 /* CoreDataWorkoutsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DCDEFD26FED70700913927 /* CoreDataWorkoutsDataSource.swift */; };
@@ -15,15 +17,13 @@
 		00DCDF0626FF0B5300913927 /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DCDF0526FF0B5300913927 /* WorkoutView.swift */; };
 		00DCDF0826FF0BA800913927 /* WorkoutSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DCDF0726FF0BA800913927 /* WorkoutSchedule.swift */; };
 		00DCDF0A26FF0BB900913927 /* DayWorkoutPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DCDF0926FF0BB900913927 /* DayWorkoutPlan.swift */; };
-		00DCDF0D26FF0C3A00913927 /* Workout+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DCDF0C26FF0C3A00913927 /* Workout+Data.swift */; };
-		00DCDF0F26FF0D6100913927 /* DayWorkoutPlan+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DCDF0E26FF0D6100913927 /* DayWorkoutPlan+Data.swift */; };
 		00DCDF1626FF119A00913927 /* AchivementsCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DCDF1526FF119A00913927 /* AchivementsCalculator.swift */; };
 		00DCDF1826FF170D00913927 /* AchivementsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DCDF1726FF170D00913927 /* AchivementsPresenter.swift */; };
 		00E0245926F8FE090050022F /* WorkoutToDataTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E0245826F8FE090050022F /* WorkoutToDataTransformer.swift */; };
 		00E0245B26F9000A0050022F /* CoreDataWorkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E0245A26F9000A0050022F /* CoreDataWorkout.swift */; };
 		00E0246226F911720050022F /* WorkoutEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E0246026F911720050022F /* WorkoutEntity+CoreDataClass.swift */; };
 		00E0246326F911720050022F /* WorkoutEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E0246126F911720050022F /* WorkoutEntity+CoreDataProperties.swift */; };
-		00EB9D3E2713F34C0046D03F /* WorkoutsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EB9D3D2713F34C0046D03F /* WorkoutsDataSource.swift */; };
+		00EB9D3E2713F34C0046D03F /* WorkoutsPersistenceDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EB9D3D2713F34C0046D03F /* WorkoutsPersistenceDataSource.swift */; };
 		00FB2DEF26F71E04001A7A1B /* RepCountApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FB2DEE26F71E04001A7A1B /* RepCountApp.swift */; };
 		00FB2DF126F71E04001A7A1B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FB2DF026F71E04001A7A1B /* ContentView.swift */; };
 		00FB2DF326F71E06001A7A1B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00FB2DF226F71E06001A7A1B /* Assets.xcassets */; };
@@ -56,6 +56,8 @@
 
 /* Begin PBXFileReference section */
 		00514E7226FCFDC800D97B21 /* AchivementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchivementsView.swift; sourceTree = "<group>"; };
+		0098807C2716A5B300091622 /* WorkoutTemplatesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTemplatesDataSource.swift; sourceTree = "<group>"; };
+		0098807E2716A5C200091622 /* StaticWorkoutTemplatesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticWorkoutTemplatesDataSource.swift; sourceTree = "<group>"; };
 		00BC839727036EC0007FF6D9 /* Date+Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Formatting.swift"; sourceTree = "<group>"; };
 		00BC839927036EDB007FF6D9 /* Array+Uniquing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Uniquing.swift"; sourceTree = "<group>"; };
 		00DCDEFD26FED70700913927 /* CoreDataWorkoutsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataWorkoutsDataSource.swift; sourceTree = "<group>"; };
@@ -63,15 +65,13 @@
 		00DCDF0526FF0B5300913927 /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
 		00DCDF0726FF0BA800913927 /* WorkoutSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSchedule.swift; sourceTree = "<group>"; };
 		00DCDF0926FF0BB900913927 /* DayWorkoutPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayWorkoutPlan.swift; sourceTree = "<group>"; };
-		00DCDF0C26FF0C3A00913927 /* Workout+Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Workout+Data.swift"; sourceTree = "<group>"; };
-		00DCDF0E26FF0D6100913927 /* DayWorkoutPlan+Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DayWorkoutPlan+Data.swift"; sourceTree = "<group>"; };
 		00DCDF1526FF119A00913927 /* AchivementsCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchivementsCalculator.swift; sourceTree = "<group>"; };
 		00DCDF1726FF170D00913927 /* AchivementsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchivementsPresenter.swift; sourceTree = "<group>"; };
 		00E0245826F8FE090050022F /* WorkoutToDataTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutToDataTransformer.swift; sourceTree = "<group>"; };
 		00E0245A26F9000A0050022F /* CoreDataWorkout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataWorkout.swift; sourceTree = "<group>"; };
 		00E0246026F911720050022F /* WorkoutEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkoutEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		00E0246126F911720050022F /* WorkoutEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkoutEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		00EB9D3D2713F34C0046D03F /* WorkoutsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsDataSource.swift; sourceTree = "<group>"; };
+		00EB9D3D2713F34C0046D03F /* WorkoutsPersistenceDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsPersistenceDataSource.swift; sourceTree = "<group>"; };
 		00FB2DEB26F71E04001A7A1B /* RepCount.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RepCount.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00FB2DEE26F71E04001A7A1B /* RepCountApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepCountApp.swift; sourceTree = "<group>"; };
 		00FB2DF026F71E04001A7A1B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -116,6 +116,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0098807A2716A57400091622 /* Workout Templates */ = {
+			isa = PBXGroup;
+			children = (
+				0098807B2716A58400091622 /* Data Sources */,
+			);
+			path = "Workout Templates";
+			sourceTree = "<group>";
+		};
+		0098807B2716A58400091622 /* Data Sources */ = {
+			isa = PBXGroup;
+			children = (
+				0098807C2716A5B300091622 /* WorkoutTemplatesDataSource.swift */,
+				0098807E2716A5C200091622 /* StaticWorkoutTemplatesDataSource.swift */,
+			);
+			path = "Data Sources";
+			sourceTree = "<group>";
+		};
 		00BC839627036EB0007FF6D9 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,8 +182,6 @@
 		00DCDF0B26FF0C2100913927 /* Fixtures */ = {
 			isa = PBXGroup;
 			children = (
-				00DCDF0C26FF0C3A00913927 /* Workout+Data.swift */,
-				00DCDF0E26FF0D6100913927 /* DayWorkoutPlan+Data.swift */,
 			);
 			path = Fixtures;
 			sourceTree = "<group>";
@@ -241,7 +256,7 @@
 		00EB9D442713FC3A0046D03F /* Data Sources */ = {
 			isa = PBXGroup;
 			children = (
-				00EB9D3D2713F34C0046D03F /* WorkoutsDataSource.swift */,
+				00EB9D3D2713F34C0046D03F /* WorkoutsPersistenceDataSource.swift */,
 			);
 			path = "Data Sources";
 			sourceTree = "<group>";
@@ -275,6 +290,7 @@
 				00DCDF1126FF10EF00913927 /* Core */,
 				00DCDEFF26FEDD4500913927 /* Views */,
 				00E0245626F8FCBD0050022F /* Persistence */,
+				0098807A2716A57400091622 /* Workout Templates */,
 				00FB2DF226F71E06001A7A1B /* Assets.xcassets */,
 				00FB2DFC26F71E06001A7A1B /* Info.plist */,
 				00FB2DF426F71E06001A7A1B /* Preview Content */,
@@ -439,10 +455,10 @@
 			files = (
 				00BC839827036EC0007FF6D9 /* Date+Formatting.swift in Sources */,
 				00DCDF0426FF0AE200913927 /* CheckmarkButton.swift in Sources */,
-				00DCDF0D26FF0C3A00913927 /* Workout+Data.swift in Sources */,
 				00E0246326F911720050022F /* WorkoutEntity+CoreDataProperties.swift in Sources */,
-				00EB9D3E2713F34C0046D03F /* WorkoutsDataSource.swift in Sources */,
+				00EB9D3E2713F34C0046D03F /* WorkoutsPersistenceDataSource.swift in Sources */,
 				00DCDF1626FF119A00913927 /* AchivementsCalculator.swift in Sources */,
+				0098807F2716A5C200091622 /* StaticWorkoutTemplatesDataSource.swift in Sources */,
 				00DCDF0A26FF0BB900913927 /* DayWorkoutPlan.swift in Sources */,
 				00FB2DF826F71E06001A7A1B /* CoreDataPersistenceController.swift in Sources */,
 				00514E7326FCFDC800D97B21 /* AchivementsView.swift in Sources */,
@@ -455,12 +471,12 @@
 				00DCDF0826FF0BA800913927 /* WorkoutSchedule.swift in Sources */,
 				00FB2DF126F71E04001A7A1B /* ContentView.swift in Sources */,
 				00FB2DEF26F71E04001A7A1B /* RepCountApp.swift in Sources */,
-				00DCDF0F26FF0D6100913927 /* DayWorkoutPlan+Data.swift in Sources */,
 				00DCDEFE26FED70700913927 /* CoreDataWorkoutsDataSource.swift in Sources */,
 				00E0246226F911720050022F /* WorkoutEntity+CoreDataClass.swift in Sources */,
 				00FB2E2326F7465A001A7A1B /* DayWorkoutPlanPresenter.swift in Sources */,
 				00FB2E1F26F71EEE001A7A1B /* WorkoutDayPlanView.swift in Sources */,
 				00FB2E2126F71F32001A7A1B /* Workout.swift in Sources */,
+				0098807D2716A5B300091622 /* WorkoutTemplatesDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

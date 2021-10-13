@@ -46,7 +46,7 @@ struct CheckmarkButton: View {
 
 struct CheckmarkButton_Previews: PreviewProvider {
 
-    static private let workout = Workout.basicStrengthConditioning(workoutId: 0)
+    static private let workout = StaticWorkoutTemplatesDataSource().basicStrengthConditioning(workoutId: 0)
     static private let exercise = ExerciseViewModel(id: IndexPath(indexes: [0,0]),
                                                     title: workout.exercises[0].name,
                                                     isEnabled: true,

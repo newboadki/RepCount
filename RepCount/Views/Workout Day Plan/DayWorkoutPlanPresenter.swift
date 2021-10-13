@@ -45,14 +45,17 @@ class DayWorkoutPlanPresenter: ObservableObject {
     @Published var shouldPresentError = false
     var errorDescription = ErrorDescription()
 
-    private var plan: DayWorkoutPlan
-    private let workoutsDataSource: WorkoutsDataSource
+    private var plan: DayWorkoutPlan!
+    private let workoutsPersistenceDataSource: WorkoutsPersistenceStorageDataSource
+    private let workoutTemplateDataSource: WorkoutTemplatesDataSource
 
-    //probably we want to retrieve the plan from an interactor or data source
-    init(plan: DayWorkoutPlan, workoutsDataSource: WorkoutsDataSource) {
+    init(plan: DayWorkoutPlan,
+         workoutsPersistenceDataSource: WorkoutsPersistenceStorageDataSource,
+         workoutTemplateDataSource: WorkoutTemplatesDataSource) {
         self.workoutViewModels = DayWorkoutPlanPresenter.map(plan: plan)
-        self.plan = plan
-        self.workoutsDataSource = workoutsDataSource
+        self.workoutsPersistenceDataSource = workoutsPersistenceDataSource
+        self.workoutTemplateDataSource = workoutTemplateDataSource
+        self.plan = self.workoutTemplateDataSource.basicStrengthConditioningPlan()
     }
 
     func setIsCompleteForExercise(at indexPath: IndexPath) {
@@ -86,7 +89,7 @@ class DayWorkoutPlanPresenter: ObservableObject {
     func saveWorkout(_ workout: Workout) {
         var workoutCopy = workout
         workoutCopy.date = Date()
-        let result = workoutsDataSource.saveWorkout(workoutCopy)
+        let result = workoutsPersistenceDataSource.saveWorkout(workoutCopy)
 
         switch result {
         case .success(_):

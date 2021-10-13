@@ -17,9 +17,9 @@ struct AchivementsCalculator {
     }
 
 
-    private let workoutsDataSource: WorkoutsDataSource
+    private let workoutsDataSource: WorkoutsPersistenceGetterDataSource
 
-    init(workoutsDataSource: WorkoutsDataSource) {
+    init(workoutsDataSource: WorkoutsPersistenceGetterDataSource) {
         self.workoutsDataSource = workoutsDataSource
     }
 

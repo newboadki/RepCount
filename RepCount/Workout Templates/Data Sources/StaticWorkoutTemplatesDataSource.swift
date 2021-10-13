@@ -1,15 +1,26 @@
 //
-//  Workout+Data.swift
+//  StaticWorkoutTemplatesDataSource.swift
 //  RepCount
 //
-//  Created by Borja Arias Drake on 25.09.2021..
+//  Created by Borja Arias Drake on 13.10.2021..
 //
 
 import Foundation
 
-extension Workout {
-
-    static func basicStrengthConditioning(workoutId: Int) -> Workout {
+struct StaticWorkoutTemplatesDataSource: WorkoutTemplatesDataSource {
+    
+    func basicStrengthConditioningPlan() -> DayWorkoutPlan {
+        return DayWorkoutPlan(workouts: [
+                                WorkoutSchedule(id: "morning wk",
+                                                timeOfDay: .morning,
+                                                workout: self.basicStrengthConditioning(workoutId: 0)),
+                                
+                                WorkoutSchedule(id: "evening wk",
+                                                timeOfDay: .evening,
+                                                workout: self.basicStrengthConditioning(workoutId: 1))])        
+    }
+    
+    func basicStrengthConditioning(workoutId: Int) -> Workout {
         return Workout(id: IndexPath(indexes: [workoutId]),
                        name: "Basic Strength",
                        exercises: [Exercise(id: IndexPath(indexes: [workoutId, 0]), name: "squats", repCountGoal: 20),
@@ -23,4 +34,6 @@ extension Workout {
                                    Exercise(id:IndexPath(indexes: [workoutId, 8]), name: "Push-ups 1x10", repCountGoal: 10),
                                    Exercise(id:IndexPath(indexes: [workoutId, 9]), name: "Calf compressions",repCountGoal: 20)])
     }
+
+    
 }

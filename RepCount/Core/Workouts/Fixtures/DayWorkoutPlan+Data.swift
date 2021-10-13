@@ -13,10 +13,10 @@ extension DayWorkoutPlan {
         DayWorkoutPlan(workouts: [
             WorkoutSchedule(id: "morning wk",
                             timeOfDay: .morning,
-                            workout: Workout.basicStrengthConditioning(workoutId: 1)),
+                            workout: Workout.basicStrengthConditioning(workoutId: 0)),
 
             WorkoutSchedule(id: "evening wk",
                             timeOfDay: .evening,
-                            workout: Workout.basicStrengthConditioning(workoutId: 2))])
+                            workout: Workout.basicStrengthConditioning(workoutId: 1))])
     }
 }

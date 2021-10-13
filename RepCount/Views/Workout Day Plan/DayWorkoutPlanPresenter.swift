@@ -48,6 +48,7 @@ class DayWorkoutPlanPresenter: ObservableObject {
     private var plan: DayWorkoutPlan
     private let workoutsDataSource: WorkoutsDataSource
 
+    //probably we want to retrieve the plan from an interactor or data source
     init(plan: DayWorkoutPlan, workoutsDataSource: WorkoutsDataSource) {
         self.workoutViewModels = DayWorkoutPlanPresenter.map(plan: plan)
         self.plan = plan
@@ -117,6 +118,7 @@ class DayWorkoutPlanPresenter: ObservableObject {
         return mappedWorkouts
     }
 
+    // should be an interactor, retrieve from data source
     private static func map(workoutViewModel: WorkoutViewModel, plan: DayWorkoutPlan) -> Workout? {
         var mappedExercises = [Exercise]()
         for exerciseViewModel in workoutViewModel.exercises {

@@ -189,13 +189,6 @@
 			path = "Workout Day Plan";
 			sourceTree = "<group>";
 		};
-		00DCDF0B26FF0C2100913927 /* Fixtures */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Fixtures;
-			sourceTree = "<group>";
-		};
 		00DCDF1126FF10EF00913927 /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,7 +202,6 @@
 			isa = PBXGroup;
 			children = (
 				009880822716ACBE00091622 /* Interactors */,
-				00DCDF0B26FF0C2100913927 /* Fixtures */,
 				00EB9D442713FC3A0046D03F /* Data Sources */,
 				00EB9D422713FC290046D03F /* Models */,
 			);

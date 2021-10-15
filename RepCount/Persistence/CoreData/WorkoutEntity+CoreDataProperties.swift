@@ -2,7 +2,7 @@
 //  WorkoutEntity+CoreDataProperties.swift
 //  RepCount
 //
-//  Created by Borja Arias Drake on 20.09.2021..
+//  Created by Borja Arias Drake on 15.10.2021..
 //
 //
 
@@ -12,11 +12,30 @@ import CoreData
 
 extension WorkoutEntity {
 
-    @nonobjc class func fetchRequest() -> NSFetchRequest<WorkoutEntity> {
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<WorkoutEntity> {
         return NSFetchRequest<WorkoutEntity>(entityName: "WorkoutEntity")
     }
 
-    @NSManaged var workout: CoreDataWorkout?
+    @NSManaged public var name: String?
+    @NSManaged public var date: Date?
+    @NSManaged public var exercises: NSSet?
+
+}
+
+// MARK: Generated accessors for exercises
+extension WorkoutEntity {
+
+    @objc(addExercisesObject:)
+    @NSManaged public func addToExercises(_ value: ExerciseEntity)
+
+    @objc(removeExercisesObject:)
+    @NSManaged public func removeFromExercises(_ value: ExerciseEntity)
+
+    @objc(addExercises:)
+    @NSManaged public func addToExercises(_ values: NSSet)
+
+    @objc(removeExercises:)
+    @NSManaged public func removeFromExercises(_ values: NSSet)
 
 }
 

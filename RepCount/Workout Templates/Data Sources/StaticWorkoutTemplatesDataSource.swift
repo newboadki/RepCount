@@ -34,6 +34,4 @@ struct StaticWorkoutTemplatesDataSource: WorkoutTemplatesDataSource {
                                    Exercise(id:IndexPath(indexes: [workoutId, 8]), name: "Push-ups 1x10", repCountGoal: 10),
                                    Exercise(id:IndexPath(indexes: [workoutId, 9]), name: "Calf compressions",repCountGoal: 20)])
     }
-
-    
 }

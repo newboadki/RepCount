@@ -23,8 +23,19 @@ class CoreDataWorkoutsDataSource: WorkoutsPersistenceDataSource {
 
     func saveWorkout(_ workout: Workout) -> Result<Void, Error> {        
         let viewContext = coreDataController.container.viewContext
-        let newItem = WorkoutEntity(context: viewContext)
-        newItem.workout = CoreDataWorkout(workout: workout)
+        let workoutEntity = WorkoutEntity(context: viewContext)
+        workoutEntity.name = workout.name
+        var coreDataExercises: [ExerciseEntity] = []
+        for ex in workout.exercises {
+            let exerciseEntity = ExerciseEntity(context: viewContext)
+            exerciseEntity.name = ex.name
+            exerciseEntity.repCountGoal = Int64(ex.repCountGoal)
+            exerciseEntity.isCompleted = ex.isCompleted
+            exerciseEntity.workout = workoutEntity
+            coreDataExercises.append(exerciseEntity)
+        }
+
+        workoutEntity.addToExercises(NSSet(array: coreDataExercises))
 
         do {
             try viewContext.save()
@@ -42,8 +53,23 @@ class CoreDataWorkoutsDataSource: WorkoutsPersistenceDataSource {
 
                 do {
                     let result = try context.fetch(request)
-                    let allWorkouts = result.compactMap { workoutEntity in
-                        workoutEntity.workout?.workout
+                    let allWorkouts: [Workout] = result.compactMap { workoutEntity in
+                        var exercises = [Exercise]()
+                        if let exerciseEntities = workoutEntity.exercises {
+                            for exerciseEntity in exerciseEntities {
+                                if let exEntity = exerciseEntity as? ExerciseEntity {
+                                    exercises.append(Exercise(id: IndexPath(), // TODO: id: AnyHashable
+                                                              name: exEntity.name!,
+                                                              repCountGoal: Int(exEntity.repCountGoal),
+                                                              isCompleted: exEntity.isCompleted))
+
+                                }
+                            }
+                        }
+                        return Workout(id: IndexPath(), // TODO: id: AnyHashable
+                                       name: workoutEntity.name!,
+                                       date: workoutEntity.date,
+                                       exercises: exercises)
                     }
                     promise(.success(allWorkouts))
                 } catch {

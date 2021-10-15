@@ -8,14 +8,13 @@
 import Foundation
 import Combine
 
-struct AchivementsCalculator {
+struct AchivementsAggregatorInteractor {
 
     typealias Achievements = [String : Int]
 
     enum OperationError: String, Error {
         case couldNotRetrieveRecords = "Unable to retrieve the records from the storage system."
     }
-
 
     private let workoutsDataSource: WorkoutsPersistenceGetterDataSource
 

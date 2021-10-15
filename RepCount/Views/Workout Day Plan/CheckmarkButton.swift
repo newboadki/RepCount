@@ -15,6 +15,7 @@ struct CheckmarkButton: View {
     // TODO: Exploore what a binding to a position in an array does
     //   @Published var array: [Int] = []
     //   $presenter.array[0]  -> Binding<Int>
+    // The binding would need to capture an index variable, to be able to access a position in the array.
     @EnvironmentObject private var presenter: DayWorkoutPlanPresenter
 
     private var color: Color {

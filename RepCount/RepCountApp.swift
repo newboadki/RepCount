@@ -12,7 +12,7 @@ struct RepCountApp: App {
 
     static let workoutsDataSource = CoreDataWorkoutsDataSource(coreDataController: CoreDataPersistenceController())
     let persistenceController = CoreDataPersistenceController.shared
-    let achivementsPresenter = AchivementsPresenter(achivementsCalculator: AchivementsCalculator(workoutsDataSource: workoutsDataSource))
+    let achivementsPresenter = AchivementsPresenter(achivementsCalculator: AchivementsAggregatorInteractor(workoutsDataSource: workoutsDataSource))
     let dayPlanPresenter =  DayWorkoutPlanPresenter(plan: StaticWorkoutTemplatesDataSource().basicStrengthConditioningPlan(),
                                                     workoutTemplateDataSource: StaticWorkoutTemplatesDataSource(), processExerciseCompletion: ProcessExerciseCompletionInteractor(workoutsPersistenceDataSource: workoutsDataSource))
 

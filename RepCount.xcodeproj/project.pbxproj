@@ -18,7 +18,7 @@
 		00DCDF0626FF0B5300913927 /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DCDF0526FF0B5300913927 /* WorkoutView.swift */; };
 		00DCDF0826FF0BA800913927 /* WorkoutSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DCDF0726FF0BA800913927 /* WorkoutSchedule.swift */; };
 		00DCDF0A26FF0BB900913927 /* DayWorkoutPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DCDF0926FF0BB900913927 /* DayWorkoutPlan.swift */; };
-		00DCDF1626FF119A00913927 /* AchivementsCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DCDF1526FF119A00913927 /* AchivementsCalculator.swift */; };
+		00DCDF1626FF119A00913927 /* AchivementsAggregatorInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DCDF1526FF119A00913927 /* AchivementsAggregatorInteractor.swift */; };
 		00DCDF1826FF170D00913927 /* AchivementsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DCDF1726FF170D00913927 /* AchivementsPresenter.swift */; };
 		00E0245926F8FE090050022F /* WorkoutToDataTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E0245826F8FE090050022F /* WorkoutToDataTransformer.swift */; };
 		00E0245B26F9000A0050022F /* CoreDataWorkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E0245A26F9000A0050022F /* CoreDataWorkout.swift */; };
@@ -67,7 +67,7 @@
 		00DCDF0526FF0B5300913927 /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
 		00DCDF0726FF0BA800913927 /* WorkoutSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSchedule.swift; sourceTree = "<group>"; };
 		00DCDF0926FF0BB900913927 /* DayWorkoutPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayWorkoutPlan.swift; sourceTree = "<group>"; };
-		00DCDF1526FF119A00913927 /* AchivementsCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchivementsCalculator.swift; sourceTree = "<group>"; };
+		00DCDF1526FF119A00913927 /* AchivementsAggregatorInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchivementsAggregatorInteractor.swift; sourceTree = "<group>"; };
 		00DCDF1726FF170D00913927 /* AchivementsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchivementsPresenter.swift; sourceTree = "<group>"; };
 		00E0245826F8FE090050022F /* WorkoutToDataTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutToDataTransformer.swift; sourceTree = "<group>"; };
 		00E0245A26F9000A0050022F /* CoreDataWorkout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataWorkout.swift; sourceTree = "<group>"; };
@@ -227,7 +227,7 @@
 		00DCDF1426FF112D00913927 /* Interactors */ = {
 			isa = PBXGroup;
 			children = (
-				00DCDF1526FF119A00913927 /* AchivementsCalculator.swift */,
+				00DCDF1526FF119A00913927 /* AchivementsAggregatorInteractor.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -468,7 +468,7 @@
 				00DCDF0426FF0AE200913927 /* CheckmarkButton.swift in Sources */,
 				00E0246326F911720050022F /* WorkoutEntity+CoreDataProperties.swift in Sources */,
 				00EB9D3E2713F34C0046D03F /* WorkoutsPersistenceDataSource.swift in Sources */,
-				00DCDF1626FF119A00913927 /* AchivementsCalculator.swift in Sources */,
+				00DCDF1626FF119A00913927 /* AchivementsAggregatorInteractor.swift in Sources */,
 				0098807F2716A5C200091622 /* StaticWorkoutTemplatesDataSource.swift in Sources */,
 				00DCDF0A26FF0BB900913927 /* DayWorkoutPlan.swift in Sources */,
 				00FB2DF826F71E06001A7A1B /* CoreDataPersistenceController.swift in Sources */,

@@ -25,10 +25,10 @@ class AchivementsPresenter: ObservableObject {
 
     @Published var achivements = [AchivementViewModel]()
 
-    private let achivementsCalculator: AchivementsCalculator
+    private let achivementsCalculator: AchivementsAggregatorInteractor
     private var cancellables = Set<AnyCancellable>()
 
-    init(achivementsCalculator: AchivementsCalculator) {
+    init(achivementsCalculator: AchivementsAggregatorInteractor) {
         self.achivementsCalculator = achivementsCalculator
     }
 

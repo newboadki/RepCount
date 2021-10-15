@@ -49,6 +49,8 @@ class DayWorkoutPlanPresenter: ObservableObject {
     private let workoutTemplateDataSource: WorkoutTemplatesDataSource
     private let processExerciseCompletion: ProcessExerciseCompletionInteractor
 
+    // MARK: - Initializers
+
     init(plan: DayWorkoutPlan,
          workoutTemplateDataSource: WorkoutTemplatesDataSource,
          processExerciseCompletion: ProcessExerciseCompletionInteractor) {
@@ -57,6 +59,8 @@ class DayWorkoutPlanPresenter: ObservableObject {
         self.plan = self.workoutTemplateDataSource.basicStrengthConditioningPlan()
         self.processExerciseCompletion = processExerciseCompletion
     }
+
+    // MARK: - API
 
     func setIsCompleteForExercise(at indexPath: IndexPath) {
         // Checks before proceeding
@@ -69,6 +73,9 @@ class DayWorkoutPlanPresenter: ObservableObject {
         }
 
         // Update the view model
+        // Another way of doing this would be passing bindings to each exercise's isCompleted property.
+        // In addition to changing that property the setter code in the binding would do the rest of the logic in this method; calling
+        // the interactor.
         let exerciseIndex = indexPath[1]
         self.workoutViewModels[workoutIndex].exercises[exerciseIndex].isCompleted.toggle()
         self.workoutViewModels[workoutIndex].exercises[exerciseIndex].isEnabled = !plan.workouts[workoutIndex].workout.allExercisesCompleted
@@ -84,8 +91,12 @@ class DayWorkoutPlanPresenter: ObservableObject {
                 case .success(_):
                     shouldPresentError = false
             }
+        } else {
+            // This would be a programming error
         }
     }
+
+    // MARK: - Domain and View model mappers
 
     private static func map(plan: DayWorkoutPlan) -> [WorkoutViewModel] {
         var mappedWorkouts = [WorkoutViewModel]()

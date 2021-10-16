@@ -37,7 +37,7 @@ struct ExerciseViewModel: Identifiable {
 class DayWorkoutPlanPresenter: ObservableObject {
 
     struct ErrorDescription {
-        var title: String = ""
+        var titleKey: String = ""
         var message: String = ""
     }
     
@@ -93,14 +93,14 @@ class DayWorkoutPlanPresenter: ObservableObject {
             let processingResult = self.processExerciseCompletion.processExerciseCompletion(in: workoutDomainModel)
             switch processingResult {
                 case .failure(let error):
-                    errorDescription.title = "Something went wrong"
+                    errorDescription.titleKey = "generic.error.title"
                     errorDescription.message = error.localizedDescription
                     shouldPresentError = true
                 case .success(_):
                     shouldPresentError = false
             }
         } else {
-            // This would be a programming error
+            fatalError("Programmer error.")
         }
     }
 

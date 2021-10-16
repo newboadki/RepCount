@@ -41,7 +41,7 @@ struct WorkoutView: View {
         }
         .padding(20)
         .alert(isPresented: $presenter.shouldPresentError) {
-            Alert(title: Text(presenter.errorDescription.title),
+            Alert(title: Text(presenter.errorDescription.titleKey),
                   message: Text(presenter.errorDescription.message),
                   dismissButton: .default(Text("OK")))
         }

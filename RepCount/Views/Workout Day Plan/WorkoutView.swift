@@ -50,9 +50,9 @@ struct WorkoutView: View {
 
 struct WorkoutView_Previews: PreviewProvider {
     static var previews: some View {
-        WorkoutView(workout: WorkoutViewModel(id: IndexPath(indexes: [0]),
+        WorkoutView(workout: WorkoutViewModel(id: 0,
                                               title: "",
-                                              exercises: [ExerciseViewModel(id: IndexPath(indexes: [0, 0]), title: "Exercise 1", isEnabled: true, isCompleted: false)]))
+                                              exercises: [ExerciseViewModel(id: 1, title: "Exercise 1", isEnabled: true, isCompleted: false)]))
             .environmentObject(DayWorkoutPlanPresenter(plan: DayWorkoutPlan(workouts: []),
                                                        workoutTemplateDataSource: StaticWorkoutTemplatesDataSource(), processExerciseCompletion: ProcessExerciseCompletionInteractor(workoutsPersistenceDataSource: CoreDataWorkoutsDataSource(coreDataController: CoreDataPersistenceController()))))
     }

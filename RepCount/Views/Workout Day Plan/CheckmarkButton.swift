@@ -27,7 +27,7 @@ struct CheckmarkButton: View {
     var body: some View {
 
         Button(action: {
-            presenter.setIsCompleteForExercise(at: exercise.id)
+            presenter.setIsCompleteForExercise(withId: exercise.id)
         }, label: {
             let isOn = exercise.isCompleted
 
@@ -47,8 +47,8 @@ struct CheckmarkButton: View {
 
 struct CheckmarkButton_Previews: PreviewProvider {
 
-    static private let workout = StaticWorkoutTemplatesDataSource().basicStrengthConditioning(workoutId: 0)
-    static private let exercise = ExerciseViewModel(id: IndexPath(indexes: [0,0]),
+    static private let workout = StaticWorkoutTemplatesDataSource().basicStrengthConditioning(workoutId: 1)
+    static private let exercise = ExerciseViewModel(id: 101,
                                                     title: workout.exercises[0].name,
                                                     isEnabled: true,
                                                     isCompleted: false)

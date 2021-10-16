@@ -14,7 +14,7 @@ struct WorkoutScheduleViewModel {
 }
 
 struct WorkoutViewModel: Identifiable {
-    let id: IndexPath
+    let id: Int
     let title: String
     var exercises: [ExerciseViewModel]
 
@@ -28,7 +28,7 @@ struct WorkoutViewModel: Identifiable {
 }
 
 struct ExerciseViewModel: Identifiable {
-    let id: IndexPath
+    let id: Int
     let title: String
     var isEnabled: Bool
     var isCompleted: Bool
@@ -62,13 +62,22 @@ class DayWorkoutPlanPresenter: ObservableObject {
 
     // MARK: - API
 
-    func setIsCompleteForExercise(at indexPath: IndexPath) {
-        // Checks before proceeding
-        guard indexPath.count == 2 else {
-            return
+    func setIsCompleteForExercise(withId id: Int) {
+        var foundWorkoutIndex: Int?
+        var foundExerciseIndex: Int?
+        for (workoutIndex, workout) in self.workoutViewModels.enumerated() {
+            let workoutIds = workout.exercises.compactMap { $0.id }
+            if let firstIndexOfId = workoutIds.firstIndex(of: id) {
+                foundWorkoutIndex = workoutIndex
+                foundExerciseIndex = firstIndexOfId
+                break
+            }
         }
 
-        guard let workoutIndex = indexPath.first else {
+        // Checks before proceeding
+        guard let workoutIndex = foundWorkoutIndex,
+              let exerciseIndex = foundExerciseIndex
+        else {
             return
         }
 
@@ -76,7 +85,6 @@ class DayWorkoutPlanPresenter: ObservableObject {
         // Another way of doing this would be passing bindings to each exercise's isCompleted property.
         // In addition to changing that property the setter code in the binding would do the rest of the logic in this method; calling
         // the interactor.
-        let exerciseIndex = indexPath[1]
         self.workoutViewModels[workoutIndex].exercises[exerciseIndex].isCompleted.toggle()
         self.workoutViewModels[workoutIndex].exercises[exerciseIndex].isEnabled = !plan.workouts[workoutIndex].workout.allExercisesCompleted
 
@@ -100,16 +108,16 @@ class DayWorkoutPlanPresenter: ObservableObject {
 
     private static func map(plan: DayWorkoutPlan) -> [WorkoutViewModel] {
         var mappedWorkouts = [WorkoutViewModel]()
-        for (workoutIndex, workoutSchedule) in plan.workouts.enumerated() {
+        for workoutSchedule in plan.workouts {
             var mappedExercises = [ExerciseViewModel]()
-            for (exerciseIndex, exercise) in workoutSchedule.workout.exercises.enumerated() {
-                mappedExercises.append(ExerciseViewModel(id: IndexPath(indexes: [workoutIndex, exerciseIndex]),
+            for exercise in workoutSchedule.workout.exercises {
+                mappedExercises.append(ExerciseViewModel(id: exercise.id,
                                                          title: exercise.name + "" + "\(exercise.repCountGoal)",
                                                          isEnabled: !workoutSchedule.workout.allExercisesCompleted,
                                                          isCompleted: exercise.isCompleted))
             }
 
-            mappedWorkouts.append(WorkoutViewModel(id: IndexPath(indexes: [workoutIndex]),
+            mappedWorkouts.append(WorkoutViewModel(id: workoutSchedule.workout.id,
                                                    title: workoutSchedule.workout.name,
                                                    exercises: mappedExercises))
         }

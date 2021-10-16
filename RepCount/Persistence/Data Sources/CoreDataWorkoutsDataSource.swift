@@ -58,15 +58,14 @@ class CoreDataWorkoutsDataSource: WorkoutsPersistenceDataSource {
                         if let exerciseEntities = workoutEntity.exercises {
                             for exerciseEntity in exerciseEntities {
                                 if let exEntity = exerciseEntity as? ExerciseEntity {
-                                    exercises.append(Exercise(id: IndexPath(), // TODO: id: AnyHashable
+                                    exercises.append(Exercise(id: exEntity.objectID.hashValue,
                                                               name: exEntity.name!,
                                                               repCountGoal: Int(exEntity.repCountGoal),
                                                               isCompleted: exEntity.isCompleted))
-
                                 }
                             }
                         }
-                        return Workout(id: IndexPath(), // TODO: id: AnyHashable
+                        return Workout(id: workoutEntity.objectID.hashValue,
                                        name: workoutEntity.name!,
                                        date: workoutEntity.date,
                                        exercises: exercises)

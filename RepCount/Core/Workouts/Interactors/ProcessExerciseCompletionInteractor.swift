@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 struct ProcessExerciseCompletionInteractor {
 
@@ -20,25 +21,21 @@ struct ProcessExerciseCompletionInteractor {
         self.workoutsPersistenceDataSource = workoutsPersistenceDataSource
     }
 
-    func processExerciseCompletion(in workout: Workout) -> Result<ProcessingResult, Error> {
+    func processExerciseCompletion(in workout: Workout) -> AnyPublisher<ProcessingResult, Error> {
         if workout.allExercisesCompleted {
             return self.saveWorkout(workout)
         } else {
-            return .success(.noOp)
+            return Just(.noOp).setFailureType(to: Error.self).eraseToAnyPublisher()
         }
     }
 
-    private func saveWorkout(_ workout: Workout) -> Result<ProcessingResult, Error> {
+    private func saveWorkout(_ workout: Workout) -> AnyPublisher<ProcessingResult, Error> {
         var workoutCopy = workout
         workoutCopy.date = Date()
-        let result = workoutsPersistenceDataSource.saveWorkout(workoutCopy)
-
-        switch result {
-            case .success(_):
-                return .success(.saved)
-
-            case .failure(let error):
-                return .failure(error)
-        }
+        return workoutsPersistenceDataSource.saveWorkout(workoutCopy)
+            .map { _ in
+                .saved
+            }
+            .eraseToAnyPublisher()
     }
 }

@@ -12,7 +12,7 @@ protocol WorkoutsPersistenceGetterDataSource {
 }
 
 protocol WorkoutsPersistenceStorageDataSource {
-    func saveWorkout(_ workout: Workout) -> Result<Void, Error>
+    func saveWorkout(_ workout: Workout) -> Future<Void, Error>
 }
 
 protocol WorkoutsPersistenceDataSource: WorkoutsPersistenceGetterDataSource & WorkoutsPersistenceStorageDataSource {

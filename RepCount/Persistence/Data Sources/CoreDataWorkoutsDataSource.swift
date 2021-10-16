@@ -21,27 +21,31 @@ class CoreDataWorkoutsDataSource: WorkoutsPersistenceDataSource {
         self.coreDataController = coreDataController
     }
 
-    func saveWorkout(_ workout: Workout) -> Result<Void, Error> {        
-        let viewContext = coreDataController.container.viewContext
-        let workoutEntity = WorkoutEntity(context: viewContext)
-        workoutEntity.name = workout.name
-        var coreDataExercises: [ExerciseEntity] = []
-        for ex in workout.exercises {
-            let exerciseEntity = ExerciseEntity(context: viewContext)
-            exerciseEntity.name = ex.name
-            exerciseEntity.repCountGoal = Int64(ex.repCountGoal)
-            exerciseEntity.isCompleted = ex.isCompleted
-            exerciseEntity.workout = workoutEntity
-            coreDataExercises.append(exerciseEntity)
-        }
+    func saveWorkout(_ workout: Workout) -> Future<Void, Error> {
+        return Future { promise in
+            let context = self.coreDataController.container.newBackgroundContext()
+            context.perform {
+                let workoutEntity = WorkoutEntity(context: context)
+                workoutEntity.name = workout.name
+                var coreDataExercises: [ExerciseEntity] = []
+                for ex in workout.exercises {
+                    let exerciseEntity = ExerciseEntity(context: context)
+                    exerciseEntity.name = ex.name
+                    exerciseEntity.repCountGoal = Int64(ex.repCountGoal)
+                    exerciseEntity.isCompleted = ex.isCompleted
+                    exerciseEntity.workout = workoutEntity
+                    coreDataExercises.append(exerciseEntity)
+                }
 
-        workoutEntity.addToExercises(NSSet(array: coreDataExercises))
+                workoutEntity.addToExercises(NSSet(array: coreDataExercises))
 
-        do {
-            try viewContext.save()
-            return .success(())
-        } catch {
-            return .failure(error as NSError)
+                do {
+                    try context.save()
+                    promise(.success(()))
+                } catch {
+                    promise(.failure(error as NSError))
+                }
+            }
         }
     }
 

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreData
+import Combine
 
 struct WorkoutScheduleViewModel {
     let title: String
@@ -48,6 +49,7 @@ class DayWorkoutPlanPresenter: ObservableObject {
     private var plan: DayWorkoutPlan!
     private let workoutTemplateDataSource: WorkoutTemplatesDataSource
     private let processExerciseCompletion: ProcessExerciseCompletionInteractor
+    private var processingCompletionCancellable: AnyCancellable?
 
     // MARK: - Initializers
 
@@ -63,42 +65,54 @@ class DayWorkoutPlanPresenter: ObservableObject {
     // MARK: - API
 
     func setIsCompleteForExercise(withId id: Int) {
-        var foundWorkoutIndex: Int?
-        var foundExerciseIndex: Int?
+        let (foundWorkoutIndex, foundExerciseIndex) = findIndexes(forExerciseId: id)
+        guard let workoutIndex = foundWorkoutIndex, let exerciseIndex = foundExerciseIndex else {
+            return
+        }
+        updateViewModel(workoutIndex: workoutIndex, exerciseIndex: exerciseIndex)
+        processCompletionEvent(workoutIndex: workoutIndex)
+    }
+
+    private func findIndexes(forExerciseId id: Int) -> (workoutIndex: Int?, exerciseIndex: Int?) {
         for (workoutIndex, workout) in self.workoutViewModels.enumerated() {
             let workoutIds = workout.exercises.compactMap { $0.id }
-            if let firstIndexOfId = workoutIds.firstIndex(of: id) {
-                foundWorkoutIndex = workoutIndex
-                foundExerciseIndex = firstIndexOfId
-                break
+            if let firstIndexOfExerciseId = workoutIds.firstIndex(of: id) {
+                return (workoutIndex: workoutIndex, exerciseIndex: firstIndexOfExerciseId)
             }
         }
 
-        // Checks before proceeding
-        guard let workoutIndex = foundWorkoutIndex,
-              let exerciseIndex = foundExerciseIndex
-        else {
-            return
-        }
+        return (workoutIndex: nil, exerciseIndex: nil)
+    }
 
+    private func updateViewModel(workoutIndex: Int, exerciseIndex: Int) {
         // Update the view model
         // Another way of doing this would be passing bindings to each exercise's isCompleted property.
         // In addition to changing that property the setter code in the binding would do the rest of the logic in this method; calling
         // the interactor.
         self.workoutViewModels[workoutIndex].exercises[exerciseIndex].isCompleted.toggle()
         self.workoutViewModels[workoutIndex].exercises[exerciseIndex].isEnabled = !plan.workouts[workoutIndex].workout.allExercisesCompleted
+    }
 
-        // Process the completion event
+    private func processCompletionEvent(workoutIndex: Int) {
         if let workoutDomainModel = Self.map(workoutViewModel: self.workoutViewModels[workoutIndex], plan: self.plan) {
-            let processingResult = self.processExerciseCompletion.processExerciseCompletion(in: workoutDomainModel)
-            switch processingResult {
-                case .failure(let error):
-                    errorDescription.titleKey = "generic.error.title"
-                    errorDescription.message = error.localizedDescription
-                    shouldPresentError = true
-                case .success(_):
-                    shouldPresentError = false
-            }
+            self.processingCompletionCancellable = self.processExerciseCompletion.processExerciseCompletion(in: workoutDomainModel)
+                .receive(on: DispatchQueue.main)
+                .sink(receiveCompletion: { completion in
+                    switch completion {
+                        case .failure(let completionError):
+                            self.errorDescription.titleKey = "generic.error.title"
+                            self.errorDescription.message = completionError.localizedDescription
+                            self.shouldPresentError = true
+                        case .finished:
+                            self.processingCompletionCancellable = nil
+                    }
+                },
+                receiveValue: { processingResult in
+                    switch processingResult {
+                        case .saved, .noOp:
+                            self.shouldPresentError = false
+                    }
+                })
         } else {
             fatalError("Programmer error.")
         }

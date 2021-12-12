@@ -35,8 +35,10 @@ struct ExerciseViewModel: Identifiable {
     var isCompleted: Bool
 }
 
-class DayWorkoutPlanPresenter: ObservableObject {
+final class DayWorkoutPlanPresenter: ObservableObject {
 
+    // MARK: - Internal
+    
     struct ErrorDescription {
         var titleKey: String = ""
         var message: String = ""
@@ -46,6 +48,8 @@ class DayWorkoutPlanPresenter: ObservableObject {
     @Published var shouldPresentError = false
     var errorDescription = ErrorDescription()
 
+    // MARK: - Private
+    
     private var plan: DayWorkoutPlan!
     private let workoutTemplateDataSource: WorkoutTemplatesDataSource
     private let processExerciseCompletion: ProcessExerciseCompletionInteractor
@@ -169,5 +173,4 @@ class DayWorkoutPlanPresenter: ObservableObject {
 
         return nil
     }
-
 }

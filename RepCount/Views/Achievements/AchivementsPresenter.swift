@@ -21,7 +21,7 @@ struct AchivementViewModel: Identifiable {
     var repCount: Int
 }
 
-class AchivementsPresenter: ObservableObject {
+final class AchivementsPresenter: ObservableObject {
 
     @Published var achivements = [AchivementViewModel]()
 

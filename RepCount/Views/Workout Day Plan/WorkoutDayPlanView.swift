@@ -6,12 +6,11 @@
 //
 
 import SwiftUI
-
-
+import Resolver
 
 struct DayWorkoutPlanView: View {
 
-    @EnvironmentObject private var presenter: DayWorkoutPlanPresenter
+    @ObservedObject private var presenter: DayWorkoutPlanPresenter = Resolver.resolve()
 
     var body: some View {
         NavigationView {
@@ -22,6 +21,7 @@ struct DayWorkoutPlanView: View {
                             Text(workout.title)
                                 .font(.title)
                             WorkoutView(workout: workout)
+                                .environmentObject(presenter)
                         }
                     }
                 }

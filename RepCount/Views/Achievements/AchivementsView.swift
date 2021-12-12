@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
+import Resolver
 
 struct AchivementsView: View {
 
-    @EnvironmentObject private var presenter: AchivementsPresenter
+    @ObservedObject private var presenter: AchivementsPresenter = Resolver.resolve()
     
     var body: some View {
         VStack {

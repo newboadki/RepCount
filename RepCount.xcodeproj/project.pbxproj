@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		003C13502765CF31004DA152 /* Resolver in Frameworks */ = {isa = PBXBuildFile; productRef = 003C134F2765CF31004DA152 /* Resolver */; };
+		003C13532765CFD2004DA152 /* Application+Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003C13522765CFD2004DA152 /* Application+Injection.swift */; };
 		003FB600271944E3003760A9 /* ExerciseEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003FB5FC271944E3003760A9 /* ExerciseEntity+CoreDataClass.swift */; };
 		003FB601271944E3003760A9 /* ExerciseEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003FB5FD271944E3003760A9 /* ExerciseEntity+CoreDataProperties.swift */; };
 		003FB602271944E3003760A9 /* WorkoutEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003FB5FE271944E3003760A9 /* WorkoutEntity+CoreDataClass.swift */; };
@@ -56,6 +58,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		003C13522765CFD2004DA152 /* Application+Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Application+Injection.swift"; sourceTree = "<group>"; };
 		003FB5FC271944E3003760A9 /* ExerciseEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExerciseEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		003FB5FD271944E3003760A9 /* ExerciseEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExerciseEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		003FB5FE271944E3003760A9 /* WorkoutEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkoutEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -98,6 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				003C13502765CF31004DA152 /* Resolver in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,6 +122,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		003C13512765CF8E004DA152 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				003C13522765CFD2004DA152 /* Application+Injection.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
 		009318D8271A96AE00B40FDC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -296,6 +308,7 @@
 			isa = PBXGroup;
 			children = (
 				00FB2DEE26F71E04001A7A1B /* RepCountApp.swift */,
+				003C13512765CF8E004DA152 /* DI */,
 				00BC839627036EB0007FF6D9 /* Extensions */,
 				00DCDF1126FF10EF00913927 /* Core */,
 				00DCDEFF26FEDD4500913927 /* Views */,
@@ -351,6 +364,9 @@
 			dependencies = (
 			);
 			name = RepCount;
+			packageProductDependencies = (
+				003C134F2765CF31004DA152 /* Resolver */,
+			);
 			productName = RepCount;
 			productReference = 00FB2DEB26F71E04001A7A1B /* RepCount.app */;
 			productType = "com.apple.product-type.application";
@@ -423,6 +439,9 @@
 				"en-GB",
 			);
 			mainGroup = 00FB2DE226F71E04001A7A1B;
+			packageReferences = (
+				003C134E2765CF31004DA152 /* XCRemoteSwiftPackageReference "Resolver" */,
+			);
 			productRefGroup = 00FB2DEC26F71E04001A7A1B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -489,6 +508,7 @@
 				00FB2E2326F7465A001A7A1B /* DayWorkoutPlanPresenter.swift in Sources */,
 				00FB2E1F26F71EEE001A7A1B /* WorkoutDayPlanView.swift in Sources */,
 				00FB2E2126F71F32001A7A1B /* Workout.swift in Sources */,
+				003C13532765CFD2004DA152 /* Application+Injection.swift in Sources */,
 				0098807D2716A5B300091622 /* WorkoutTemplatesDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -820,6 +840,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		003C134E2765CF31004DA152 /* XCRemoteSwiftPackageReference "Resolver" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hmlongco/Resolver.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		003C134F2765CF31004DA152 /* Resolver */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 003C134E2765CF31004DA152 /* XCRemoteSwiftPackageReference "Resolver" */;
+			productName = Resolver;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		00FB2DF926F71E06001A7A1B /* RepCount.xcdatamodeld */ = {

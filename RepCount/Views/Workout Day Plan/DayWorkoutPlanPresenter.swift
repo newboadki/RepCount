@@ -73,6 +73,8 @@ class DayWorkoutPlanPresenter: ObservableObject {
         processCompletionEvent(workoutIndex: workoutIndex)
     }
 
+    // MARK: - Private helpers
+
     private func findIndexes(forExerciseId id: Int) -> (workoutIndex: Int?, exerciseIndex: Int?) {
         for (workoutIndex, workout) in self.workoutViewModels.enumerated() {
             let workoutIds = workout.exercises.compactMap { $0.id }

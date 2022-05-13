@@ -14,7 +14,7 @@ extension Resolver: ResolverRegistering {
     }()
     
     public static func registerAllServices() {
-        
+                
         // Workout persistence data source
         register {
             Self.workoutPersistenceDataSource

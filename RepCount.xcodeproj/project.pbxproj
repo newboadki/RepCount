@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		003C13502765CF31004DA152 /* Resolver in Frameworks */ = {isa = PBXBuildFile; productRef = 003C134F2765CF31004DA152 /* Resolver */; };
+		000A689828277EFE008431F7 /* Resolver in Frameworks */ = {isa = PBXBuildFile; productRef = 000A689728277EFE008431F7 /* Resolver */; };
 		003C13532765CFD2004DA152 /* Application+Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003C13522765CFD2004DA152 /* Application+Injection.swift */; };
 		003FB600271944E3003760A9 /* ExerciseEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003FB5FC271944E3003760A9 /* ExerciseEntity+CoreDataClass.swift */; };
 		003FB601271944E3003760A9 /* ExerciseEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003FB5FD271944E3003760A9 /* ExerciseEntity+CoreDataProperties.swift */; };
@@ -101,7 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				003C13502765CF31004DA152 /* Resolver in Frameworks */,
+				000A689828277EFE008431F7 /* Resolver in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,7 +365,7 @@
 			);
 			name = RepCount;
 			packageProductDependencies = (
-				003C134F2765CF31004DA152 /* Resolver */,
+				000A689728277EFE008431F7 /* Resolver */,
 			);
 			productName = RepCount;
 			productReference = 00FB2DEB26F71E04001A7A1B /* RepCount.app */;
@@ -440,7 +440,7 @@
 			);
 			mainGroup = 00FB2DE226F71E04001A7A1B;
 			packageReferences = (
-				003C134E2765CF31004DA152 /* XCRemoteSwiftPackageReference "Resolver" */,
+				000A689628277EFE008431F7 /* XCRemoteSwiftPackageReference "Resolver" */,
 			);
 			productRefGroup = 00FB2DEC26F71E04001A7A1B /* Products */;
 			projectDirPath = "";
@@ -842,20 +842,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		003C134E2765CF31004DA152 /* XCRemoteSwiftPackageReference "Resolver" */ = {
+		000A689628277EFE008431F7 /* XCRemoteSwiftPackageReference "Resolver" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hmlongco/Resolver.git";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		003C134F2765CF31004DA152 /* Resolver */ = {
+		000A689728277EFE008431F7 /* Resolver */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 003C134E2765CF31004DA152 /* XCRemoteSwiftPackageReference "Resolver" */;
+			package = 000A689628277EFE008431F7 /* XCRemoteSwiftPackageReference "Resolver" */;
 			productName = Resolver;
 		};
 /* End XCSwiftPackageProductDependency section */
